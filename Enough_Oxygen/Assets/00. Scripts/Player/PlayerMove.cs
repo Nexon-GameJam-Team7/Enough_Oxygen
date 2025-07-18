@@ -8,11 +8,13 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody2D rigid;
     private Player player;
+    private Animator animator;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -29,5 +31,8 @@ public class PlayerMove : MonoBehaviour
         Vector2 moveVector = inputVector.normalized * speed * Time.fixedDeltaTime;
 
         rigid.MovePosition(rigid.position + moveVector);
+
+        animator.SetFloat("DirX", inputVector.x);
+        animator.SetFloat("DirY", inputVector.y);
     }
 }
