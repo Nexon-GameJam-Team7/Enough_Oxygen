@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4689a598976de4eac9006bce3c9668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
 --- !u!70 &94890479
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 252180888}
   - component: {fileID: 252180887}
   - component: {fileID: 252180886}
+  - component: {fileID: 252180889}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -411,6 +412,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252180889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252180885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb93715c6a281c44b6d4e39f733b4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 94890477}
 --- !u!1 &683594634
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +645,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 781521873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a162aad483163d646862fcbb8cc0f67f, type: 3}
+  m_Script: {fileID: 11500000, guid: b65f017dce54eb346985d573dca7fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &839531890

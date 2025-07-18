@@ -14,8 +14,13 @@ public class UIBase : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            player.UnInteraction();
-            Destroy(gameObject);
+            Close();
         }
+    }
+
+    public void Close()
+    {
+        player.UnInteraction();
+        Destroy(gameObject);
     }
 }

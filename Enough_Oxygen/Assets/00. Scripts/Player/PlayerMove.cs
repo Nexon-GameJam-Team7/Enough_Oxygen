@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 5f;
 
     private Rigidbody2D rigid;
+    private Vector2 lastDir;
     private Player player;
     private Animator animator;
 
@@ -30,10 +31,23 @@ public class PlayerMove : MonoBehaviour
         Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 moveVector = inputVector.normalized * speed * Time.fixedDeltaTime;
 
-        rigid.MovePosition(rigid.position + moveVector);
+        bool isMoving = inputVector != Vector2.zero;
 
-        // Temp Animation
-        animator.SetFloat("DirX", inputVector.x);
-        animator.SetFloat("DirY", inputVector.y);
+        animator.SetBool("isWalk", isMoving);
+
+        if (isMoving)
+        {
+            lastDir = inputVector;
+            animator.SetFloat("DirX", inputVector.x);
+            animator.SetFloat("DirY", inputVector.y);
+        }
+        else
+        {
+            // 움직이지 않을 땐 마지막 방향 유지
+            animator.SetFloat("DirX", lastDir.x);
+            animator.SetFloat("DirY", lastDir.y);
+        }
+
+        rigid.MovePosition(rigid.position + moveVector);
     }
 }
