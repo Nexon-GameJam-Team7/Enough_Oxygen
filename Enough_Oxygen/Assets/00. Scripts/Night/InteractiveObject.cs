@@ -4,8 +4,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class InteractiveObject : MonoBehaviour
 {
-    private bool interactve = false;
-
     protected virtual void ObjectEvent()
     {
         // @@ Overriding @@

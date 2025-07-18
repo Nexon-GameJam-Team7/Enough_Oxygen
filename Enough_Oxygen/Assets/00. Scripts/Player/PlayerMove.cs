@@ -32,6 +32,7 @@ public class PlayerMove : MonoBehaviour
 
         rigid.MovePosition(rigid.position + moveVector);
 
+        // Temp Animation
         animator.SetFloat("DirX", inputVector.x);
         animator.SetFloat("DirY", inputVector.y);
     }
