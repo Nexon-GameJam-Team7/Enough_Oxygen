@@ -11,17 +11,6 @@ public class Ingredient_Fish : ObjectInteraction
     protected void Start()
     {
         base.init();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public override void init()
-    {
-        base.init();
         usingStep = 0;
         isUsing = false;
     }

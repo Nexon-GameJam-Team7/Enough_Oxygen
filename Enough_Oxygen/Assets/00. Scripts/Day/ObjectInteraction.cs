@@ -20,7 +20,6 @@ public class ObjectInteraction : MonoBehaviour
 
     public virtual void GoBack()
     {
-        Debug.Log("���ڸ��� ���ư���");
         gameObject.transform.position = initialPos;
         Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
         newAlpha.a = 0;

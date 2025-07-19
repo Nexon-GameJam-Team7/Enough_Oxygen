@@ -194,7 +194,7 @@ public class TimeManager : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
-        //GameManager.Scene.ConvertScene("Main Title");
+        GameManager.Scene.ConvertScene("Main Title");
     }
 
     IEnumerator DayAlertCoroutine()
