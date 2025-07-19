@@ -78,6 +78,8 @@ public class TimeManager : MonoBehaviour
 
     public void SwapTime()
     {
+        if (dayCount > maxDayCount) return;
+
         if (timeOfDay == 0)
         {
             timeOfDay = 1;
@@ -128,7 +130,11 @@ public class TimeManager : MonoBehaviour
             timeOfDay = 0;
 
             bool gameset = IncreaseDay();
-            if (gameset) return;
+            if (gameset)
+            {
+                StartCoroutine(GameOverCoroutine());
+                return;
+            }
 
             GameManager.Sound.BGMPlay("bgm1");
             searchLight.gameObject.SetActive(false);
@@ -172,6 +178,23 @@ public class TimeManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool IsLasyDay()
+    {
+        return (dayCount == maxDayCount);
+    }
+
+    IEnumerator GameOverCoroutine()
+    {
+        Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI", "Game Over"));
+
+        Alert alert = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+        alert.OpenAlert("탈출에 실패했습니다");
+
+        yield return new WaitForSeconds(5f);
+
+        //GameManager.Scene.ConvertScene("Main Title");
     }
 
     IEnumerator DayAlertCoroutine()
