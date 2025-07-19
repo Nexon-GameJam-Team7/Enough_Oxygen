@@ -42,9 +42,11 @@ public class Alert : MonoBehaviour
             float t = elapsedTime / duration;
             float alpha = Mathf.Lerp(1f, 0f, t);  // 알파값 1 → 0으로 선형 보간
             image.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, alpha);
         }
 
         image.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, 0f);
 
         Player player = FindObjectOfType<Player>();
         player.UnInteraction();
@@ -65,8 +67,10 @@ public class Alert : MonoBehaviour
             float t = elapsedTime / duration;
             float alpha = Mathf.Lerp(0f, 1f, t);
             image.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, alpha);
         }
 
         image.color = new Color(startColor.r, startColor.g, startColor.b, 1f);
+        tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, 1f);
     }
 }

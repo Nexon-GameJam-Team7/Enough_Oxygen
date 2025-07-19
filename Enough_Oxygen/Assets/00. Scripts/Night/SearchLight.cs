@@ -4,28 +4,51 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SearchLight : MonoBehaviour
 {
-    [SerializeField] private float moveDistance;
     [SerializeField] private float moveSpeed;
 
-    private Vector3 startPos;
+    [SerializeField] private Transform[] points;
+    [SerializeField] private TimeManager timeManager;
+    private int currentPointIdx;
+    private int direction = 1;
+
     private bool canMove = true;
 
-    private void Start()
+    private void OnEnable()
     {
-        startPos = transform.position;
+        if (points.Length == 0) return;
+
+        transform.position = points[0].position;
+        currentPointIdx = 0;
+        direction = 1;
     }
 
     private void Update()
     {
+        if (!canMove || points.Length < 2) return;
+
         Move();
     }
 
     private void Move()
     {
-        if (!canMove) return;
+        Transform target = points[currentPointIdx];
 
-        float offset = Mathf.PingPong(Time.time * moveSpeed, moveDistance);
-        transform.position = startPos + new Vector3(0, offset, 0);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            target.position,
+            moveSpeed * Time.deltaTime
+        );
+
+        if (Vector3.Distance(transform.position, target.position) < 0.01f)
+        {
+            // 방향 전환 조건
+            if (currentPointIdx == points.Length - 1)
+                direction = -1;
+            else if (currentPointIdx == 0)
+                direction = 1;
+
+            currentPointIdx += direction;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,5 +58,18 @@ public class SearchLight : MonoBehaviour
         // Game Over
         canMove = false;
         GameManager.Sound.SFXPlay("siren");
+
+        timeManager.Pause();
+
+        Invoke("SwapTime", 3f);
+    }
+
+    private void SwapTime()
+    {
+        GameObject sfxs = GameObject.Find("SFXPlayer");
+        Destroy(sfxs);
+
+        timeManager.Resume();
+        timeManager.SwapTime();
     }
 }

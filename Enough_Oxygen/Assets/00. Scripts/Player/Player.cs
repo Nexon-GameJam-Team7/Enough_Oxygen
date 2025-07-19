@@ -10,6 +10,21 @@ public class Player : MonoBehaviour
 
     private Action actionEvent;
 
+    private Vector3 startPos;
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
+
+    public void Init()
+    {
+        transform.position = startPos;
+
+        interactive = true;
+        isInteracting = false;
+    }
+
     private void Update()
     {
         InputHandler();
