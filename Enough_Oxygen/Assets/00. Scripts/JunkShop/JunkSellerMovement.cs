@@ -61,11 +61,12 @@ public class JunkSellerMovement : MonoBehaviour
             if (pos == 0)
             {
                 pos++;
+
             }
             else if (pos == 2)
             {
                 Debug.Log("x" + to.x + " y" + to.y + " z" + to.z);
-                Destroy(this.gameObject);
+                transform.position = startPoint;
             }
         }
     }
