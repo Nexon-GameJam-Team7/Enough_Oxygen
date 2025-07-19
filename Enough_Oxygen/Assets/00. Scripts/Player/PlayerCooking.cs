@@ -7,6 +7,7 @@ public class PlayerCooking : MonoBehaviour
 {
     public GameObject holdingObj = null;
     public GameManager gm = null;
+    public CustomerGenerator cg = null;
     public bool canReadyMenu = true;
     public GameObject myChoppingBoard;
 
@@ -21,6 +22,11 @@ public class PlayerCooking : MonoBehaviour
         else
             Debug.Log("No GM");
         text.text = "" + gm.money;
+
+        if (GameObject.Find("CustomerGenerator"))
+            cg = GameObject.Find("CustomerGenerator").GetComponent<CustomerGenerator>();
+        else
+            Debug.Log("No CG");
     }
 
     // Update is called once per frame
@@ -111,11 +117,11 @@ public class PlayerCooking : MonoBehaviour
                 } else if (clickedObj.CompareTag("Pot"))
                 {
                     if (holdingObj == null) {
-                        if (clickedObj.GetComponent<Interactor_Pot>().finalStep)
+                        if (cg.curCustomer != null && cg.isCustomerReady && clickedObj.GetComponent<Interactor_Pot>().finalStep)
                         {
                             // 제출 및 평가
                             Debug.Log("제출 및 평가");
-                            gm.money += clickedObj.GetComponent<Interactor_Pot>().Rating();
+                            gm.money += cg.curCustomer.GetComponent<CustomerMovement>().GetFood(clickedObj);
                             text.text = "" + gm.money;
                             Destroy(clickedObj.gameObject);
                             canReadyMenu = true;
@@ -193,7 +199,7 @@ public class PlayerCooking : MonoBehaviour
                     {
                         if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
                         {
-                            holdingObj.transform.position = clickedObj.transform.position;
+                            holdingObj.transform.position = clickedObj.transform.GetChild(0).position;
                             holdingObj.GetComponent<Interactor_Pot>().finalStep = true;
                             holdingObj.GetComponent<SpriteRenderer>().sprite = holdingObj.GetComponent<Interactor_Pot>().Sprite_endPot;
                             holdingObj = null;
