@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using TMPro;
+using System.Collections;
 
 [DisallowMultipleComponent]
 public class TimeManager : MonoBehaviour
@@ -13,11 +14,12 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private int dayCount = 1;
     [SerializeField] private int maxDayCount = 3;
 
-    [Range(0, 1), Header("낮: 0 | 밤: 1")]
+    [Range(0, 2), Header("낮: 0 | 오후: 1 | 밤: 2")]
     [SerializeField] private int timeOfDay;
 
     [SerializeField] private SearchLight searchLight;
     [SerializeField] private Player player;
+    [SerializeField] private JunkSellerMovement seller;
 
     [SerializeField] private TextMeshProUGUI timerTMP;
     [SerializeField] private TextMeshProUGUI dayTMP;
@@ -29,8 +31,10 @@ public class TimeManager : MonoBehaviour
 
     [SerializeField] private Camera dayCamera;
     [SerializeField] private Camera nightCamera;
+    [SerializeField] private Camera twailCamera;
 
-    [SerializeField] private DayManager dayManager;
+    [SerializeField] private GameObject dayEnvPrefab;
+    [SerializeField] private GameObject dayEnv;
 
     private bool isStop = false;
 
@@ -38,19 +42,19 @@ public class TimeManager : MonoBehaviour
     {
         GameManager.Sound.BGMPlay("bgm1");
 
-        GameObject alertObj = Instantiate(GameManager.Resource.Load<GameObject>("Prefabs/UI", "Alert Canvas"));
-        Alert alert = alertObj.GetComponent<Alert>();
-        alert.OpenAlert(dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "낮" : "밤"));
+        StartCoroutine(DayAlertCoroutine());
 
         System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(unitTime - timer);
         string formatted = string.Format("{0}:{1:00}", (int)timeSpan.TotalMinutes, timeSpan.Seconds);
         timerTMP.text = formatted;
 
-        dayTMP.text = dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "낮" : "밤");
+        dayTMP.text = dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "오전" : "오후");
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) SwapTime();
+
         if (isStop) return;
 
         if (timer < unitTime)
@@ -74,55 +78,87 @@ public class TimeManager : MonoBehaviour
 
     public void SwapTime()
     {
-        player.Init();
-
-        UIBase uiBase = FindObjectOfType<UIBase>();
-        if (uiBase != null) uiBase.Close();
-
         if (timeOfDay == 0)
         {
             timeOfDay = 1;
             GameManager.Sound.BGMPlay("bgm2");
+
+            watchImage.sprite = watchSprite[1];
+
+            dayCamera.gameObject.SetActive(false);
+            twailCamera.gameObject.SetActive(true);
+            nightCamera.gameObject.SetActive(false);
+
+            watchCanvas.worldCamera = twailCamera;
+
+            Alert alert = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+            alert.OpenAlert("오후가 되어 고물상이 찾아옵니다.");
+
+            seller.Init();
+            Destroy(dayEnv);
+            dayEnv = null;
+
+            Pause();
+        }
+        else if (timeOfDay == 1)
+        {
+            timeOfDay = 2;
             searchLight.gameObject.SetActive(true);
 
             watchImage.sprite = watchSprite[2];
 
             dayCamera.gameObject.SetActive(false);
+            twailCamera.gameObject.SetActive(false);
             nightCamera.gameObject.SetActive(true);
 
             watchCanvas.worldCamera = nightCamera;
 
-            dayManager.DayInit();
+            Alert alert = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+            alert.OpenAlert("밤이 되었습니다.");
+
+            player.gameObject.SetActive(true);
+
+            Resume();
         }
-        else if (timeOfDay == 1)
+        else if (timeOfDay == 2)
         {
+            UIBase uiBase = FindObjectOfType<UIBase>();
+            if (uiBase != null) uiBase.Close();
+
             timeOfDay = 0;
-            IncreaseDay();
+
+            bool gameset = IncreaseDay();
+            if (gameset) return;
+
             GameManager.Sound.BGMPlay("bgm1");
             searchLight.gameObject.SetActive(false);
 
             watchImage.sprite = watchSprite[0];
 
             dayCamera.gameObject.SetActive(true);
+            twailCamera.gameObject.SetActive(false);
             nightCamera.gameObject.SetActive(false);
 
             watchCanvas.worldCamera = dayCamera;
+
+            player.Init();
+            player.gameObject.SetActive(false);
+
+            dayEnv = Instantiate(dayEnvPrefab);
+
+            StartCoroutine(DayAlertCoroutine());
         }
 
         timer = 0;  // Init Timer
-
-        GameObject alertObj = Instantiate(GameManager.Resource.Load<GameObject>("Prefabs/UI", "Alert Canvas"));
-        Alert alert = alertObj.GetComponent<Alert>();
-        alert.OpenAlert(dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "낮" : "밤"));
 
         System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(unitTime - timer);
         string formatted = string.Format("{0}:{1:00}", (int)timeSpan.TotalMinutes, timeSpan.Seconds);
         timerTMP.text = formatted;
 
-        dayTMP.text = dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "낮" : "밤");
+        dayTMP.text = dayCount.ToString() + "일차 " + (timeOfDay == 0 ? "오전" : "오후");
     }
 
-    private void IncreaseDay()
+    private bool IncreaseDay()
     {
         dayCount++;
 
@@ -131,7 +167,24 @@ public class TimeManager : MonoBehaviour
             // Game Set
             Debug.Log("Game Set Time Over");
             isStop = true;   // Stop Timer
+
+            return true;
         }
+
+        return false;
+    }
+
+    IEnumerator DayAlertCoroutine()
+    {
+        Alert alert1 = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+
+        if (4-dayCount == 1) alert1.OpenAlert("하루 남았습니다.");
+        else alert1.OpenAlert((4 - dayCount) + "일 남았습니다.");
+
+        yield return new WaitForSeconds(3f);
+
+        Alert alert2 = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+        alert2.OpenAlert("낮이 되어 식당을 오픈했습니다.");
     }
 
     public void Pause()

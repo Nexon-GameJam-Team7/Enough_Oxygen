@@ -8,7 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private bool isPause = false;
-    public int money = 0;
+    
 
     private static GameManager instance;
     public static GameManager Instance

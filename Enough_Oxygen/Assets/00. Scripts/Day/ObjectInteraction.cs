@@ -12,9 +12,10 @@ public class ObjectInteraction : MonoBehaviour
         init();
     }
 
-    protected void init()
+    public void init()
     {
         initialPos = gameObject.transform.position;
+        isUsing = false;
     }
 
     public virtual void GoBack()

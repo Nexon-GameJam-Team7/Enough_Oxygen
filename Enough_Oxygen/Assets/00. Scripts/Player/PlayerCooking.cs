@@ -11,22 +11,10 @@ public class PlayerCooking : MonoBehaviour
     public bool canReadyMenu = true;
     public GameObject myChoppingBoard;
 
-    [SerializeField]
-    private TMP_Text text = null;
-
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        if (GameObject.Find("GameManager"))
-            gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        else
-            Debug.Log("No GM");
-        text.text = "" + gm.money;
-
-        if (GameObject.Find("CustomerGenerator"))
-            cg = GameObject.Find("CustomerGenerator").GetComponent<CustomerGenerator>();
-        else
-            Debug.Log("No CG");
+        Init();
     }
 
     public void Init()
@@ -38,6 +26,9 @@ public class PlayerCooking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cg == null) cg = GameObject.Find("CustomerGenerator").GetComponent<CustomerGenerator>();
+
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -133,8 +124,7 @@ public class PlayerCooking : MonoBehaviour
                         {
                             // ���� �� ��
                             Debug.Log("���� �� ��");
-                            gm.money += cg.curCustomer.GetComponent<CustomerMovement>().GetFood(clickedObj);
-                            text.text = "" + gm.money;
+                            GameManager.Data.data.money += cg.curCustomer.GetComponent<CustomerMovement>().GetFood(clickedObj);
                             Destroy(clickedObj.gameObject);
                             canReadyMenu = true;
                             break;

@@ -1,26 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    [SerializeField] private PlayerCooking playerCooking;
-    [SerializeField] private Interactor_CuttingBoard cuttingBoard;
     [SerializeField] private ObjectInteraction[] objectInteractions;
 
-    private void Start()
+    public void Init()
     {
-        DayInit();
-    }
-
-    public void DayInit()
-    {
-        playerCooking.Init();
-        cuttingBoard.myFish = null;
-        
         for (int i = 0; i < objectInteractions.Length; i++)
         {
+            objectInteractions[i].init();
             objectInteractions[i].GoBack();
+        }
+
+        CustomerMovement customer = FindObjectOfType<CustomerMovement>();
+        if (customer != null) Destroy(customer.gameObject);
+
+        Interactor_CuttingBoard ic = FindObjectOfType<Interactor_CuttingBoard>();
+        if (ic != null) ic.Chopping();
+
+        PlayerCooking playerCook = FindObjectOfType<PlayerCooking>();
+        if (playerCook != null) playerCook.Init();
+
+
+        CustomerGenerator cg = FindObjectOfType<CustomerGenerator>();
+        if (cg != null)
+        {
+            cg.gameObject.SetActive(false);
+            cg.gameObject.SetActive(true);
         }
     }
 }

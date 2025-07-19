@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Ingredient_Fish : ObjectInteraction
 {
-    public int usingStep = 0;  // 1: µµ¸¶¿¡ ¿Ã·ÁÁü, 2: ´ÙÁ®Áü
+    public int usingStep = 0;  // 1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½, 2: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public Sprite Sprite_groundFish = null;
     public Vector3 originPos;
 
@@ -27,19 +27,19 @@ public class Ingredient_Fish : ObjectInteraction
         {
             isUsing = true;
             usingStep++;
-            // »ý¼± µµ¸¶¿¡ ¿Ã¸®±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½
             OnDrop(target);
             target.GetComponent<Interactor_CuttingBoard>().myFish = this.gameObject;
         } else if (usingStep == 1)
         {
             usingStep++;
-            // »ý¼± ´ÙÁö±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             target.GetComponent<Interactor_CuttingBoard>().Chopping();
             gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_groundFish;
             initialPos = gameObject.transform.position;
         } else if (usingStep == 2)
         {
-            // ³¿ºñ¿¡ ³Ö±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
             if (target.name == "Pot1" || target.name == "Pot2")
                 target.GetComponent<Interactor_Pot>().Interaction(this.gameObject);
         }

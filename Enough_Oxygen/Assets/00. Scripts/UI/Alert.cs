@@ -49,7 +49,7 @@ public class Alert : MonoBehaviour
         tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, 0f);
 
         Player player = FindObjectOfType<Player>();
-        player.UnInteraction();
+        if (player != null) player.UnInteraction();
 
         Destroy(gameObject);
     }

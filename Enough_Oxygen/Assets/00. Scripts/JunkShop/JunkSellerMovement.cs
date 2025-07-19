@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JunkSellerMovement : MonoBehaviour
 {
-    private Vector3 startPoint = new Vector3(-9, 2.0f, 0);
-    private Vector3 waitingPoint = new Vector3(0, 2.0f, 0);
-    private Vector3 endPoint = new Vector3(9, 2.0f, 0);
+    private Vector3 startPoint = new Vector3(-9.6f, 57.1f, 0);
+    private Vector3 waitingPoint = new Vector3(0, 57.1f, 0);
+    private Vector3 endPoint = new Vector3(9.6f, 57.1f, 0);
 
-    int pos = 0;    // 0: s->w ¿òÁ÷ÀÌ±â, 1: ´ë±â, 2: w->e ¿òÁ÷ÀÌ±â
+    int pos = 0;    // 0: s->w ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½, 1: ï¿½ï¿½ï¿½, 2: w->e ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½
 
     [SerializeField]
     private float speed = 1.5f;
@@ -20,9 +20,27 @@ public class JunkSellerMovement : MonoBehaviour
     private float journeyLength;
     private float startTime;
 
+    [SerializeField] private GameObject[] items;
+
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
+        journeyLength = 9;
+        pos = 0;
+    }
+
+    public void Init()
+    {
+        Debug.Log("ì´ˆê¸°í™”");
+
+        transform.position = startPoint;
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].SetActive(false);
+        }
+
         startTime = Time.time;
         journeyLength = 9;
         pos = 0;
@@ -46,18 +64,24 @@ public class JunkSellerMovement : MonoBehaviour
         float distCovered = (Time.time - startTime) * speed;
         float frac = Mathf.Clamp01(distCovered / journeyLength);
 
-        // ±âº» À§Ä¡ (XÃà ¼±Çü ÀÌµ¿)
+        // ï¿½âº» ï¿½ï¿½Ä¡ (Xï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½)
         Vector3 flatPos = Vector3.Lerp(from, to, frac);
 
-        // YÃà ¹Ýµ¿ Ãß°¡ (»çÀÎ °î¼±)
+        // Yï¿½ï¿½ ï¿½Ýµï¿½ ï¿½ß°ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½î¼±)
         float bounce = Mathf.Sin(Time.time * bounceSpeed) * bounceHeight;
         Vector3 finalPos = new Vector3(flatPos.x, flatPos.y + bounce, flatPos.z);
 
-        // À§Ä¡ Àû¿ë
+        // ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         transform.position = finalPos;
 
         if (Vector3.Distance(transform.position, to) < 0.01f)
         {
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[i].SetActive(true);
+            }
+
+
             if (pos == 0)
             {
                 pos++;
