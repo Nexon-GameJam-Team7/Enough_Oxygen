@@ -1893,6 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c2bd95728dbc046afe7b2168a62028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
 --- !u!1 &693452300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,6 +2504,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8e3840217efe4134fa5f93fd50d862f8, type: 3}
   - {fileID: 21300000, guid: e1980484c86c41b4ba84b2bdae36a88a, type: 3}
   watchImage: {fileID: 99969708}
+  watchCanvas: {fileID: 0}
+  dayCamera: {fileID: 0}
+  nightCamera: {fileID: 0}
+  dayManager: {fileID: 0}
 --- !u!1 &841242752
 GameObject:
   m_ObjectHideFlags: 0

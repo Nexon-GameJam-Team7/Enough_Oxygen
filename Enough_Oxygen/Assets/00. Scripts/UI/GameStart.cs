@@ -6,11 +6,7 @@ public class GameStart : MonoBehaviour
 {
     public void StartButton()
     {
-
-
-
-
-
+        Debug.Log("start");
         GameManager.Scene.ConvertScene("DayTimeScene");
     }
 }
