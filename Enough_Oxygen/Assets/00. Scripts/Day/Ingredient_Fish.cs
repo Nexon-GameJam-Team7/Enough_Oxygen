@@ -6,19 +6,24 @@ public class Ingredient_Fish : ObjectInteraction
 {
     public int usingStep = 0;  // 1: µµ¸¶¿¡ ¿Ã·ÁÁü, 2: ´ÙÁ®Áü
     public Sprite Sprite_groundFish = null;
-    public Vector3 originPos;
 
     // Start is called before the first frame update
     protected void Start()
     {
         base.init();
-        originPos = initialPos;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public override void init()
+    {
+        base.init();
+        usingStep = 0;
+        isUsing = false;
     }
 
     public void Interact(GameObject target)
