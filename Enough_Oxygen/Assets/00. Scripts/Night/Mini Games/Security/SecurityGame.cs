@@ -125,6 +125,7 @@ public class SecurityGame : MonoBehaviour
             // Add Button Event
             Button button = buttonObj.GetComponent<Button>();
             button.onClick.AddListener(() => ConjectureWord(letterButton, button));
+            button.onClick.AddListener(() => GameManager.Sound.SFXPlay("keyboard"));
 
             GameObject barObj = Instantiate(GameManager.Resource.Load<GameObject>("Prefabs/UI/MiniGame/Security", "Word Bar"));
             barObj.transform.SetParent(barParent);
@@ -155,7 +156,7 @@ public class SecurityGame : MonoBehaviour
     {
         if (conjectureString == currentWord)
         {
-            Debug.Log("Success");
+            GameManager.Sound.SFXPlay("success");
 
             // Next Stage
             wordListIdx++;
@@ -169,7 +170,7 @@ public class SecurityGame : MonoBehaviour
         }
         else
         {
-            Debug.Log("Failed!");
+            GameManager.Sound.SFXPlay("fail");
             InitScreen(wordListIdx);
         }
     }

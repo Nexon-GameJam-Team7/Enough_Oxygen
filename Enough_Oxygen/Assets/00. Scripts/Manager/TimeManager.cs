@@ -15,6 +15,11 @@ public class TimeManager : MonoBehaviour
 
     private bool isStop = false;
 
+    private void Start()
+    {
+        GameManager.Sound.BGMPlay("bgm1");
+    }
+
     private void Update()
     {
         if (isStop) return;
@@ -36,11 +41,16 @@ public class TimeManager : MonoBehaviour
 
     private void SwapTime()
     {
-        if (timeOfDay == 0) timeOfDay = 1;
+        if (timeOfDay == 0)
+        {
+            timeOfDay = 1;
+            GameManager.Sound.BGMPlay("bgm2");
+        }
         else if (timeOfDay == 1)
         {
             timeOfDay = 0;
             IncreaseDay();
+            GameManager.Sound.BGMPlay("bgm1");
         }
 
         timer = 0;  // Init Timer

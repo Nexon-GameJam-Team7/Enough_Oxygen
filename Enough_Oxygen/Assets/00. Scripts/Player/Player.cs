@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) GameManager.Data.data.haveItem[0] = true;
         else if (Input.GetKeyDown(KeyCode.X)) GameManager.Data.data.haveItem[1] = true;
         else if (Input.GetKeyDown(KeyCode.V)) GameManager.Data.data.haveItem[3] = true;
+        else if (Input.GetKeyDown(KeyCode.C)) GameManager.Data.data.haveItem[2] = true;
+
+        if (Input.GetMouseButtonDown(0)) GameManager.Sound.SFXPlay("click");
     }
 
     /// <summary>
@@ -34,8 +37,8 @@ public class Player : MonoBehaviour
     {
         if (interactive && !isInteracting)
         {
-            actionEvent();
             isInteracting = true;
+            actionEvent();
         }
     }
 

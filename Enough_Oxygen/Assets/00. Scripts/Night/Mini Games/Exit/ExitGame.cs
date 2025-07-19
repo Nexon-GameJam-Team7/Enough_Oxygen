@@ -57,10 +57,6 @@ public class ExitGame : MonoBehaviour
 
     public void Close()
     {
-        Player player = FindObjectOfType<Player>();
-        player.UnableToInteract();
-        player.UnInteraction();
-
         ObjectManager objManager = FindObjectOfType<ObjectManager>();
         objManager.CompleteExitMission();
 

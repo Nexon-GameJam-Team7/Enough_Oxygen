@@ -146,6 +146,8 @@ public class CommnunicationGame : MonoBehaviour
         currentLine.positionCount = 2;
         currentLine.widthMultiplier = 0.1f;
         currentLine.SetPositions(currentLinePoints.ToArray());
+
+        GameManager.Sound.SFXPlay("rope");
     }
 
     public void DragOver(Cell cell)

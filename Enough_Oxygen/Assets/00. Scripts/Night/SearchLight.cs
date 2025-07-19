@@ -34,6 +34,6 @@ public class SearchLight : MonoBehaviour
 
         // Game Over
         canMove = false;
-        Debug.Log("Find!");
+        GameManager.Sound.SFXPlay("siren");
     }
 }

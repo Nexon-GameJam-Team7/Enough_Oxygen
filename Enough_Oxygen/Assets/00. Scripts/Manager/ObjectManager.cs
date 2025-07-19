@@ -6,7 +6,6 @@ public class ObjectManager : MonoBehaviour
     [SerializeField] private SecurityObject securityObject;
     [SerializeField] private CommunicationObject communicationObject;
     [SerializeField] private ExitObject exitObject;
-
     public void CompleteSecurityMission()
     {
         GameManager.Data.data.clearCount++;

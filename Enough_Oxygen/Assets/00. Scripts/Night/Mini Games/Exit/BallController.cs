@@ -33,6 +33,8 @@ public class BallController : MonoBehaviour
 
     IEnumerator MoveCoroutine(Vector2Int dir)
     {
+        GameManager.Sound.SFXPlay("dragging");
+
         canMove = false;
 
         Vector2Int nextPos = currentPos + dir;

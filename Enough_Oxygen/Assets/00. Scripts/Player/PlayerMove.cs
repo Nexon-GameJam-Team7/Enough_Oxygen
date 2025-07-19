@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
     private Player player;
     private Animator animator;
 
+    [SerializeField] private float footstepInterval = 0.3f;
+    private float footstepTimer = 0f;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -40,10 +43,18 @@ public class PlayerMove : MonoBehaviour
             lastDir = inputVector;
             animator.SetFloat("DirX", inputVector.x);
             animator.SetFloat("DirY", inputVector.y);
+
+            footstepTimer -= Time.fixedDeltaTime;
+            if (footstepTimer <= 0f)
+            {
+                GameManager.Sound.SFXPlay("footstep");
+                footstepTimer = footstepInterval;
+            }
         }
         else
         {
             // 움직이지 않을 땐 마지막 방향 유지
+            footstepTimer = 0f;
             animator.SetFloat("DirX", lastDir.x);
             animator.SetFloat("DirY", lastDir.y);
         }

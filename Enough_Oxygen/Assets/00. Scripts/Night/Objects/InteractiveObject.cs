@@ -40,5 +40,6 @@ public class InteractiveObject : MonoBehaviour
 
         Player player = FindObjectOfType<Player>();
         player.UnableToInteract();
+        player.UnInteraction();
     }
 }
