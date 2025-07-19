@@ -10,7 +10,7 @@ public class ChangeCloth : MonoBehaviour
     [SerializeField]
     private Sprite[] eveningCutscene = new Sprite[13];
     [SerializeField]
-    private float speed = 0.5f;
+    private float speed = 0.1f;
 
     [SerializeField]
     private Image display = null;
