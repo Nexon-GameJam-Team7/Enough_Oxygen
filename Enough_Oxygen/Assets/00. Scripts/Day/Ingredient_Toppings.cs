@@ -9,4 +9,10 @@ public class Ingredient_Toppings : ObjectInteraction
     {
         base.init();
     }
+
+    public override void init()
+    {
+        base.init();
+        isUsing = false;
+    }
 }
