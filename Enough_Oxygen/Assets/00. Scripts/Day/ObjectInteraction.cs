@@ -21,6 +21,9 @@ public class ObjectInteraction : MonoBehaviour
     {
         Debug.Log("제자리로 돌아가기");
         gameObject.transform.position = initialPos;
+        Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
+        newAlpha.a = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = newAlpha;
     }
 
     // 상호작용 가능 물체에 떨구기

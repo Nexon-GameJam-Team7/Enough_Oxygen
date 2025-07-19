@@ -10,6 +10,8 @@ public class Interactor_Pot : ObjectInteraction
 
     public Sprite Sprite_Pot = null;
     public Sprite Sprite_waterPot = null;
+    public Sprite Sprite_saucePot = null;
+    public Sprite Sprite_fishPot = null;
     public Sprite Sprite_burnedWaterPot = null;
     public Sprite Sprite_endPot = null;
     public bool water = false;
@@ -42,16 +44,39 @@ public class Interactor_Pot : ObjectInteraction
             {
                 if (!hasIngredients[i] && target.gameObject.name + "Pos" == ingredientPos[i].gameObject.name)
                 {
-                    target.gameObject.transform.SetParent(ingredientPos[i].gameObject.transform);
                     target.gameObject.transform.position = ingredientPos[i].gameObject.transform.position;
+                    target.SetActive(false);
+                    target.gameObject.transform.SetParent(ingredientPos[i].gameObject.transform);
                     itemGenerator.GenerateItem(target.name);
                     target.gameObject.tag = "Temp";
                     target.gameObject.GetComponent<ObjectInteraction>().isUsing = true;
                     hasIngredients[i] = true;
                     if (target.name != "Seaweed")
+                    {
                         order[orderNum++] = true;
+                        if (target.name == "Sauce")
+                        {
+                            if (boiledTime < 8)
+                                this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_saucePot;
+                            Color newAlpha = target.GetComponent<SpriteRenderer>().color;
+                            newAlpha.a = 0;
+                            target.GetComponent<SpriteRenderer>().color = newAlpha;
+                        }
+                        else if (target.name == "Fish")
+                        {
+                            if (boiledTime < 8)
+                            {
+                                this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_fishPot;
+                                if (boiledTime >= 4)
+                                    this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_endPot;
+                            }
+                        }
+                    }
                     else
+                    {
+                        transform.GetChild(2).gameObject.SetActive(true);
                         order[3] = true;
+                    }
                 }
             }
             // 각각 원래 자리에 프리팹 생성
@@ -103,6 +128,9 @@ public class Interactor_Pot : ObjectInteraction
         {
             yield return new WaitForSeconds(1f);
             boiledTime++;
+            Debug.Log(boiledTime);
+            if (boiledTime == 4 && order[1] && order[2])
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_endPot;
         }
         
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_burnedWaterPot;

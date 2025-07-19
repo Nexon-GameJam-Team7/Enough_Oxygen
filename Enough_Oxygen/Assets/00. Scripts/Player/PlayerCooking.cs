@@ -72,7 +72,13 @@ public class PlayerCooking : MonoBehaviour
                     }
                     // 다른 오브젝트 새로 집기
                     if (!clickedObj.GetComponent<ObjectInteraction>().isUsing && (clickedObj.gameObject.tag != "Pot" || clickedObj.gameObject.tag != "Temp"))
+                    {
+                        Color newAlpha = clickedObj.GetComponent<SpriteRenderer>().color;
+                        newAlpha.a = 1;
+                        clickedObj.GetComponent<SpriteRenderer>().color = newAlpha;
+
                         holdingObj = clickedObj;
+                    }
 
                     break;
                 } else if (clickedObj.CompareTag("CuttingBoard"))
@@ -201,7 +207,6 @@ public class PlayerCooking : MonoBehaviour
                         {
                             holdingObj.transform.position = clickedObj.transform.GetChild(0).position;
                             holdingObj.GetComponent<Interactor_Pot>().finalStep = true;
-                            holdingObj.GetComponent<SpriteRenderer>().sprite = holdingObj.GetComponent<Interactor_Pot>().Sprite_endPot;
                             holdingObj = null;
                             canReadyMenu = false;
                         }
