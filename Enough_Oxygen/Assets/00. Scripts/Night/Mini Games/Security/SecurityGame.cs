@@ -26,6 +26,7 @@ public class SecurityGame : MonoBehaviour
     private string conjectureString;
 
     private int wordLength;
+    private ObjectManager objectManager;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class SecurityGame : MonoBehaviour
         wordListIdx = 0;
 
         uiBase = GetComponent<UIBase>();
+        objectManager = FindObjectOfType<ObjectManager>();
 
         InitScreen(wordListIdx);
     }
@@ -56,7 +58,6 @@ public class SecurityGame : MonoBehaviour
     {
         UpdateGridSize buttonParentGrid = buttonParent.GetComponent<UpdateGridSize>();
         int offset = buttonParentGrid.ComputeOffset();
-        Debug.Log(offset);
 
         buttonParentGrid.UpdateOffset(offset);
 
@@ -159,7 +160,11 @@ public class SecurityGame : MonoBehaviour
             // Next Stage
             wordListIdx++;
 
-            if (wordListIdx >= wordList.Count) uiBase.Close();
+            if (wordListIdx >= wordList.Count)
+            {
+                objectManager.CompleteSecurityMission();
+                uiBase.Close();
+            }
             else InitScreen(wordListIdx);
         }
         else

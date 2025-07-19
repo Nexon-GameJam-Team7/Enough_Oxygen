@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
 [DisallowMultipleComponent]
-public class CommunicationObject : InteractiveObject
+public class ExitObject : InteractiveObject
 {
     protected override void ObjectEvent()
     {
         if (GameManager.Data.data.haveItem[itemID])
         {
-            Debug.Log("Security Object");
-            Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI/MiniGame/Communication", "Communication Canvas"));
+            Debug.Log("Exit Object");
+            Player player = FindObjectOfType<Player>();
+            Instantiate(GameManager.Resource.Load<GameObject>("Prefabs/UI/MiniGame/Exit", "Exit Game"), new Vector3(player.transform.position.x - 3, player.transform.position.y - 3, 0), Quaternion.identity);
         }
         else
         {

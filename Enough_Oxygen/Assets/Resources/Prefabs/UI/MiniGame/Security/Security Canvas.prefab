@@ -433,9 +433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wordList:
-  - OCEAN
+  - PEOPLE
   - WASTE
-  - HUMAN
   - THEIR
   - CHILD
   buttonParent: {fileID: 9080815045163361335}

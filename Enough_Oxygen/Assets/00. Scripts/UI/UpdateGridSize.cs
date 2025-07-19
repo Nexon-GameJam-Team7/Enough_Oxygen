@@ -12,7 +12,6 @@ public class UpdateGridSize : MonoBehaviour
     public int ComputeOffset()
     {
         int childCount = transform.childCount;
-        Debug.Log(childCount);
 
         if (childCount == 0) return 0;
 

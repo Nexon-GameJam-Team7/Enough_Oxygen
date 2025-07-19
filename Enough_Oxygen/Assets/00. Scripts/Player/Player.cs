@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     private void Update()
     {
         InputHandler();
+
+        if (Input.GetKeyDown(KeyCode.Z)) GameManager.Data.data.haveItem[0] = true;
+        else if (Input.GetKeyDown(KeyCode.X)) GameManager.Data.data.haveItem[1] = true;
+        else if (Input.GetKeyDown(KeyCode.V)) GameManager.Data.data.haveItem[3] = true;
     }
 
     /// <summary>
