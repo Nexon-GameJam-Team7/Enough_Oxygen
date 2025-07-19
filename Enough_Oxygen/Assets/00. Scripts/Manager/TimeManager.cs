@@ -30,6 +30,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Camera dayCamera;
     [SerializeField] private Camera nightCamera;
 
+    [SerializeField] private DayManager dayManager;
+
     private bool isStop = false;
 
     private void Start()
@@ -89,6 +91,8 @@ public class TimeManager : MonoBehaviour
             nightCamera.gameObject.SetActive(true);
 
             watchCanvas.worldCamera = nightCamera;
+
+            dayManager.DayInit();
         }
         else if (timeOfDay == 1)
         {

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,14 +19,14 @@ public class ObjectInteraction : MonoBehaviour
 
     public virtual void GoBack()
     {
-        Debug.Log("Á¦ÀÚ¸®·Î µ¹¾Æ°¡±â");
+        Debug.Log("ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½");
         gameObject.transform.position = initialPos;
         Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
         newAlpha.a = 0;
         gameObject.GetComponent<SpriteRenderer>().color = newAlpha;
     }
 
-    // »óÈ£ÀÛ¿ë °¡´É ¹°Ã¼¿¡ ¶³±¸±â
+    // ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void OnDrop(GameObject target)
     {
         gameObject.transform.position = target.transform.position;

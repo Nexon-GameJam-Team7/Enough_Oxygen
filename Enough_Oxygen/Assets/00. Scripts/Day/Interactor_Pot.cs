@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class Interactor_Pot : ObjectInteraction
 {
     private ItemGenerator itemGenerator;
     private GameObject[] ingredientPos = new GameObject[3];
-    private bool[] hasIngredients = { false, false, false };   // ¾ç³äÀå, »ý¼±, ¹Ì¿ª °í¸í ¼ø¼­
+    private bool[] hasIngredients = { false, false, false };   // ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public Sprite Sprite_Pot = null;
     public Sprite Sprite_waterPot = null;
@@ -18,9 +18,9 @@ public class Interactor_Pot : ObjectInteraction
     private bool onSink = false;
     public bool finalStep = false;
 
-    // Æò°¡ ¿ä¼Ò
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½
     public int boiledTime = 0;
-    public bool[] order = { false, false, false, false };   // 1: ¹°, 2: ¾ç³äÀå, 3: ´ÙÁø »ý¼±, 4: °í¸í
+    public bool[] order = { false, false, false, false };   // 1: ï¿½ï¿½, 2: ï¿½ï¿½ï¿½ï¿½ï¿½, 3: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 4: ï¿½ï¿½ï¿½
     public int orderNum = 0;
 
 
@@ -79,7 +79,7 @@ public class Interactor_Pot : ObjectInteraction
                     }
                 }
             }
-            // °¢°¢ ¿ø·¡ ÀÚ¸®¿¡ ÇÁ¸®ÆÕ »ý¼º
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         } else if (target.gameObject.CompareTag("Water"))
         {
             if (!water)
@@ -89,11 +89,11 @@ public class Interactor_Pot : ObjectInteraction
         }
         else if (target.gameObject.CompareTag("Fire"))
         {
-            // È­±¸¿¡ ³¿ºñ °íÁ¤
+            // È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             gameObject.transform.position = new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 0.5f, target.gameObject.transform.position.z);
             isUsing = true;
             itemGenerator.GenerateItem(this.gameObject.name);
-            // Å¸ÀÌ¸Ó ½ÃÀÛ
+            // Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             StartCoroutine("BurningTimer");
         }
     }
@@ -106,9 +106,9 @@ public class Interactor_Pot : ObjectInteraction
         for (int i = 0; i < 3; i++)
             if (!order[i])
                 checkRecipe = false;
-        Debug.Log("·¹½ÃÇÇ: " + checkRecipe);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + checkRecipe);
 
-        int boiledDegree = 0;   // 0: ¸Í¹°, 1: ÀûÀý, 2: Å½
+        int boiledDegree = 0;   // 0: ï¿½Í¹ï¿½, 1: ï¿½ï¿½ï¿½ï¿½, 2: Å½
         if (boiledTime >= 8)
             boiledDegree = 2;
         else if (boiledTime >= 4)

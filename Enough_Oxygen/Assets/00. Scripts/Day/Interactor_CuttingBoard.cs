@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class Interactor_CuttingBoard: MonoBehaviour
 
     public void Chopping()
     {
-        // Ä® ¾Ö´Ï¸ÞÀÌ¼Ç Ãâ·Â ¹× Ä® ¼û±â±â
+        // Ä® ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä® ï¿½ï¿½ï¿½ï¿½ï¿½
         knife.SetActive(false);
     }
 

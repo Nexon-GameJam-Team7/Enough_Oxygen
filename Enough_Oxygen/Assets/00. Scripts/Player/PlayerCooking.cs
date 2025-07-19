@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -27,6 +27,12 @@ public class PlayerCooking : MonoBehaviour
             cg = GameObject.Find("CustomerGenerator").GetComponent<CustomerGenerator>();
         else
             Debug.Log("No CG");
+    }
+
+    public void Init()
+    {
+        holdingObj = null;
+        canReadyMenu = true;
     }
 
     // Update is called once per frame
@@ -61,16 +67,16 @@ public class PlayerCooking : MonoBehaviour
 
                 if (clickedObj.CompareTag("Ingredients") && !clickedObj.GetComponent<ObjectInteraction>().isUsing)
                 {
-                    // Àç·á µç »óÅÂ¿¡¼­ ´Ù¸¥ Àç·á ¼±ÅÃ
-                    // ±âÁ¸ ¿ÀºêÁ§Æ® ³õ±â
+                    // ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
                     if (holdingObj != null)
                     {
-                        // ¿Ï¼º ¿ä¸® µç »óÅÂ¿¡¼­´Â Àï¹Ý¸¸ ¼±ÅÃ °¡´É
+                        // ï¿½Ï¼ï¿½ ï¿½ä¸® ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ý¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                         if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
                             break;
                         holdingObj.GetComponent<ObjectInteraction>().GoBack();
                     }
-                    // ´Ù¸¥ ¿ÀºêÁ§Æ® »õ·Î Áý±â
+                    // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     if (!clickedObj.GetComponent<ObjectInteraction>().isUsing && (clickedObj.gameObject.tag != "Pot" || clickedObj.gameObject.tag != "Temp"))
                     {
                         Color newAlpha = clickedObj.GetComponent<SpriteRenderer>().color;
@@ -125,8 +131,8 @@ public class PlayerCooking : MonoBehaviour
                     if (holdingObj == null) {
                         if (cg.curCustomer != null && cg.isCustomerReady && clickedObj.GetComponent<Interactor_Pot>().finalStep)
                         {
-                            // Á¦Ãâ ¹× Æò°¡
-                            Debug.Log("Á¦Ãâ ¹× Æò°¡");
+                            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
+                            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½");
                             gm.money += cg.curCustomer.GetComponent<CustomerMovement>().GetFood(clickedObj);
                             text.text = "" + gm.money;
                             Destroy(clickedObj.gameObject);
@@ -134,7 +140,7 @@ public class PlayerCooking : MonoBehaviour
                             break;
                         }
 
-                        // Æ®·¹ÀÌ¿¡ ¹¹ ÀÖÀ¸¸é ¿Ï¼ºµÈ ³¿ºñ ÁýÁö ¾Ê°Ô Ã³¸®ÇÏ±â
+                        // Æ®ï¿½ï¿½ï¿½Ì¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½
                         if (canReadyMenu || !clickedObj.GetComponent<Interactor_Pot>().isUsing)
                         {
                             Color newAlpha = clickedObj.GetComponent<SpriteRenderer>().color;
@@ -151,11 +157,11 @@ public class PlayerCooking : MonoBehaviour
                         }
                     } else if (clickedObj.GetComponent<Interactor_Pot>().isUsing)
                     {
-                        // Á¶¸® ¸¶Áö¸· ´Ü°è: °í¸í ³Ö±â¸¸ °¡´É
+                        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü°ï¿½: ï¿½ï¿½ï¿½ ï¿½Ö±â¸¸ ï¿½ï¿½ï¿½ï¿½
                         if (clickedObj.GetComponent<Interactor_Pot>().finalStep) {
                             if (holdingObj.name == "Seaweed" && !clickedObj.GetComponent<Interactor_Pot>().order[3])
                             {
-                                Debug.Log("¹Ì¿ª?");
+                                Debug.Log("ï¿½Ì¿ï¿½?");
                                 clickedObj.GetComponent<Interactor_Pot>().Interaction(holdingObj);
                                 holdingObj = null;
                                 break;
@@ -164,10 +170,10 @@ public class PlayerCooking : MonoBehaviour
                                 break;
                             }
                         }
-                        // ¼ÕÁúµÇÁö ¾ÊÀº Àç·á, °í¸í ³ÖÀ¸·Á ÇÏ¸é ¹«½Ã
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
                         if (holdingObj.name == "Seaweed" || (holdingObj.name == "Fish" && holdingObj.GetComponent<Ingredient_Fish>().usingStep < 2))
                             break;
-                        // ³¿ºñ¿¡ Àç·á ³Ö±â
+                        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
                         if ((holdingObj.name == "Sauce" && clickedObj.GetComponent<Interactor_Pot>().orderNum == 1) || (holdingObj.name == "Fish" && clickedObj.GetComponent<Interactor_Pot>().orderNum == 2))
                         {
                             if (holdingObj.name == "Fish")
