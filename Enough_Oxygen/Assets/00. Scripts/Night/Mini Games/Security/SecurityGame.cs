@@ -138,7 +138,7 @@ public class SecurityGame : MonoBehaviour
         char letter = _letterButton.GetLetter();
 
         conjectureString += letter;
-        _button.enabled = false;
+        _button.interactable = false;
 
         GameObject tmpObject = Instantiate(GameManager.Resource.Load<GameObject>("Prefabs/UI/MiniGame/Security", "Conjecture TMP"));
         tmpObject.transform.SetParent(conjectureParent);

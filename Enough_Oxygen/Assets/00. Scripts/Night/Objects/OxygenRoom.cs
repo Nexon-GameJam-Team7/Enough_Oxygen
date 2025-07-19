@@ -29,6 +29,8 @@ public class OxygenRoom : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
+        if (!GameManager.Data.data.haveItem[2]) return;
+
         OpenDoor();
         GameManager.Sound.SFXPlay("automaticdoor");
 
