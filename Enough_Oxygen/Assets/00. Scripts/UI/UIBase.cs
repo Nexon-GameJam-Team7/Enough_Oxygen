@@ -24,4 +24,9 @@ public class UIBase : MonoBehaviour
         player.UnableToInteract();
         Destroy(gameObject);
     }
+
+    public void AutoClose(float _second)
+    {
+        Invoke("Close", _second);
+    }
 }

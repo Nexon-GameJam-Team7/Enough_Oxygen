@@ -175,6 +175,9 @@ public class CommnunicationGame : MonoBehaviour
                         DestroyImmediate(lineParent.GetChild(i).gameObject);
                     }
 
+                    UIBase ui = Instantiate(GameManager.Resource.Load<UIBase>("Prefabs/UI/Cut Scene", "C_Rope CutScene"));
+                    ui.AutoClose(3f);
+
                     uiBase.Close();
                     return;
                 }

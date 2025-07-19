@@ -3,12 +3,17 @@
 [DisallowMultipleComponent]
 public class CommunicationObject : InteractiveObject
 {
+    private Canvas cutScene;
+
     protected override void ObjectEvent()
     {
         if (GameManager.Data.data.haveItem[itemID])
         {
             Debug.Log("Security Object");
             Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI/MiniGame/Communication", "Communication Canvas"));
+
+            UIBase uiBase = cutScene.GetComponent<UIBase>();
+            uiBase.Close();
         }
         else
         {
@@ -16,5 +21,16 @@ public class CommunicationObject : InteractiveObject
             Alert alert = alertObj.GetComponent<Alert>();
             alert.OpenAlert("필요한 아이템이 없어 조작할 수 없습니다");
         }
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        if (isComplete) return;
+
+        if (!collision.CompareTag("Player")) return;
+
+        cutScene = Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI/Cut Scene", "C_NoRope CutScene"));
     }
 }
