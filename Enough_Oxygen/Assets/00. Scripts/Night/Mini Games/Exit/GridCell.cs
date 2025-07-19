@@ -5,6 +5,10 @@ public class GridCell : MonoBehaviour
     public Vector2Int gridPosition;
     public CellType cellType;
 
+    [SerializeField] private Sprite baseSprite;
+    [SerializeField] private Sprite block;
+    [SerializeField] private Sprite goal;
+
     public void Init(Vector2Int position, CellType type)
     {
         gridPosition = position;
@@ -18,10 +22,10 @@ public class GridCell : MonoBehaviour
         var sr = GetComponent<SpriteRenderer>();
         switch (cellType)
         {
-            case CellType.Empty: sr.color = Color.white; break;
-            case CellType.Wall: sr.color = Color.black; break;
-            case CellType.BallStart: sr.color = Color.blue; break;
-            case CellType.Goal: sr.color = Color.green; break;
+            case CellType.Empty: sr.sprite = baseSprite; break;
+            case CellType.Wall: sr.sprite = block; break;
+            case CellType.BallStart: sr.sprite = baseSprite; ; break;
+            case CellType.Goal: sr.sprite = goal; break;
         }
     }
 }

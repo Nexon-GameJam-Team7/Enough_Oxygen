@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         transform.position = startPos;
 
-        interactive = true;
+        interactive = false;
         isInteracting = false;
     }
 

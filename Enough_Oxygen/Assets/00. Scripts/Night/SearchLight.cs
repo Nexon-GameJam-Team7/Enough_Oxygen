@@ -20,6 +20,8 @@ public class SearchLight : MonoBehaviour
         transform.position = points[0].position;
         currentPointIdx = 0;
         direction = 1;
+
+        canMove = true;
     }
 
     private void Update()

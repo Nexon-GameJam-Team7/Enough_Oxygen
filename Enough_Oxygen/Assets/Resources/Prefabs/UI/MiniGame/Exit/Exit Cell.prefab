@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 292336443
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab6c9cb8d4f070f49a1fac1b340f0979, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,3 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
   cellType: 0
+  baseSprite: {fileID: 21300000, guid: ab6c9cb8d4f070f49a1fac1b340f0979, type: 3}
+  block: {fileID: 21300000, guid: ad585de33347f8443822dd9057f7b382, type: 3}
+  goal: {fileID: 21300000, guid: e2793ee323aff754dad87d8d16dd12af, type: 3}
