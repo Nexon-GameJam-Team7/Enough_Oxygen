@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerCooking : MonoBehaviour
 {
     public GameObject holdingObj = null;
+    public GameManager gm = null;
     public bool canReadyMenu = true;
     public GameObject myChoppingBoard;
+
+    [SerializeField]
+    private TMP_Text text = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameObject.Find("GameManager"))
+            gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        else
+            Debug.Log("No GM");
+        text.text = "" + gm.money;
     }
 
     // Update is called once per frame
@@ -106,7 +115,8 @@ public class PlayerCooking : MonoBehaviour
                         {
                             // 제출 및 평가
                             Debug.Log("제출 및 평가");
-                            Debug.Log(clickedObj.GetComponent<Interactor_Pot>().Rating());
+                            gm.money += clickedObj.GetComponent<Interactor_Pot>().Rating();
+                            text.text = "" + gm.money;
                             Destroy(clickedObj.gameObject);
                             canReadyMenu = true;
                             break;
