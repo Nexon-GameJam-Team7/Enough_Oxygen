@@ -6,11 +6,13 @@ public class Ingredient_Fish : ObjectInteraction
 {
     public int usingStep = 0;  // 1: 도마에 올려짐, 2: 다져짐
     public Sprite Sprite_groundFish = null;
+    public Vector3 originPos;
 
     // Start is called before the first frame update
     protected void Start()
     {
         base.init();
+        originPos = initialPos;
     }
 
     // Update is called once per frame

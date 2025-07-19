@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interactor_Pot : ObjectInteraction
 {
+    private ItemGenerator itemGenerator;
     private GameObject[] ingredientPos = new GameObject[3];
     private bool[] hasIngredients = { false, false, false };   // 양념장, 생선, 미역 고명 순서
 
@@ -24,6 +25,7 @@ public class Interactor_Pot : ObjectInteraction
     // Start is called before the first frame update
     protected void Start()
     {
+        itemGenerator = GameObject.Find("ItemGenerator").GetComponent<ItemGenerator>();
         isUsing = false;
         base.init();
         for (int i = 0; i < 3; i++)
@@ -42,6 +44,7 @@ public class Interactor_Pot : ObjectInteraction
                 {
                     target.gameObject.transform.SetParent(ingredientPos[i].gameObject.transform);
                     target.gameObject.transform.position = ingredientPos[i].gameObject.transform.position;
+                    itemGenerator.GenerateItem(target.name);
                     target.gameObject.tag = "Temp";
                     target.gameObject.GetComponent<ObjectInteraction>().isUsing = true;
                     hasIngredients[i] = true;
@@ -64,6 +67,7 @@ public class Interactor_Pot : ObjectInteraction
             // 화구에 냄비 고정
             gameObject.transform.position = new Vector3(target.gameObject.transform.position.x, target.gameObject.transform.position.y + 0.5f, target.gameObject.transform.position.z);
             isUsing = true;
+            itemGenerator.GenerateItem(this.gameObject.name);
             // 타이머 시작
             StartCoroutine("BurningTimer");
         }

@@ -6,6 +6,7 @@ public class PlayerCooking : MonoBehaviour
 {
     public GameObject holdingObj = null;
     public bool canReadyMenu = true;
+    public GameObject myChoppingBoard;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,9 @@ public class PlayerCooking : MonoBehaviour
             foreach (var hit in hits)
             {
                 GameObject clickedObj = hit.collider.gameObject;
+                Debug.Log("click: " + clickedObj.name);
 
-                if (clickedObj == holdingObj)
+                if (clickedObj == holdingObj || (clickedObj.name == "Tray" && !canReadyMenu))
                     continue;
                 
                 if (clickedObj.CompareTag("Ingredients") && !clickedObj.GetComponent<ObjectInteraction>().isUsing)
@@ -105,12 +107,13 @@ public class PlayerCooking : MonoBehaviour
                             // 제출 및 평가
                             Debug.Log("제출 및 평가");
                             Debug.Log(clickedObj.GetComponent<Interactor_Pot>().Rating());
+                            Destroy(clickedObj.gameObject);
                             canReadyMenu = true;
                             break;
                         }
 
                         // 트레이에 뭐 있으면 완성된 냄비 집지 않게 처리하기
-                        if (canReadyMenu)
+                        if (canReadyMenu || !clickedObj.GetComponent<Interactor_Pot>().isUsing)
                             holdingObj = clickedObj;
 
                         if (clickedObj.GetComponent<Interactor_Pot>().isUsing && canReadyMenu)
@@ -139,6 +142,8 @@ public class PlayerCooking : MonoBehaviour
                         // 냄비에 재료 넣기
                         if ((holdingObj.name == "Sauce" && clickedObj.GetComponent<Interactor_Pot>().orderNum == 1) || (holdingObj.name == "Fish" && clickedObj.GetComponent<Interactor_Pot>().orderNum == 2))
                         {
+                            if (holdingObj.name == "Fish")
+                                myChoppingBoard.GetComponent<Interactor_CuttingBoard>().myFish = null;
                             clickedObj.GetComponent<Interactor_Pot>().Interaction(holdingObj);
                             holdingObj = null;
                         }
@@ -174,6 +179,7 @@ public class PlayerCooking : MonoBehaviour
                         {
                             holdingObj.transform.position = clickedObj.transform.position;
                             holdingObj.GetComponent<Interactor_Pot>().finalStep = true;
+                            holdingObj.GetComponent<SpriteRenderer>().sprite = holdingObj.GetComponent<Interactor_Pot>().Sprite_endPot;
                             holdingObj = null;
                             canReadyMenu = false;
                         }
