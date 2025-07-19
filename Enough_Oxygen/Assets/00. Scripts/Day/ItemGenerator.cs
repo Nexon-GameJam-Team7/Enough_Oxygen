@@ -20,6 +20,7 @@ public class ItemGenerator : MonoBehaviour
 
     public void GenerateItem(string name)
     {
+        Debug.Log("generate");
         GameObject prefab = null;
         Vector3 pos = new Vector3(0, 0, 0);
         if (name == "Sauce")
