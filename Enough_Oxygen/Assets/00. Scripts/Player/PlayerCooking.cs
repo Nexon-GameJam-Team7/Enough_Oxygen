@@ -48,11 +48,11 @@ public class PlayerCooking : MonoBehaviour
             foreach (var hit in hits)
             {
                 GameObject clickedObj = hit.collider.gameObject;
-                Debug.Log("click: " + clickedObj.name);
 
                 if (clickedObj == holdingObj || (clickedObj.name == "Tray" && !canReadyMenu))
                     continue;
-                
+                Debug.Log("clicked: " + clickedObj.name);
+
                 if (clickedObj.CompareTag("Ingredients") && !clickedObj.GetComponent<ObjectInteraction>().isUsing)
                 {
                     // 재료 든 상태에서 다른 재료 선택
@@ -60,12 +60,12 @@ public class PlayerCooking : MonoBehaviour
                     if (holdingObj != null)
                     {
                         // 완성 요리 든 상태에서는 쟁반만 선택 가능
-                        if (holdingObj.name == "Pot" && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
+                        if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
                             break;
                         holdingObj.GetComponent<ObjectInteraction>().GoBack();
                     }
                     // 다른 오브젝트 새로 집기
-                    if (!clickedObj.GetComponent<ObjectInteraction>().isUsing  && (clickedObj.gameObject.tag != "Pot" || clickedObj.gameObject.tag != "Temp"))
+                    if (!clickedObj.GetComponent<ObjectInteraction>().isUsing && (clickedObj.gameObject.tag != "Pot" || clickedObj.gameObject.tag != "Temp"))
                         holdingObj = clickedObj;
 
                     break;
@@ -124,7 +124,13 @@ public class PlayerCooking : MonoBehaviour
 
                         // 트레이에 뭐 있으면 완성된 냄비 집지 않게 처리하기
                         if (canReadyMenu || !clickedObj.GetComponent<Interactor_Pot>().isUsing)
+                        {
+                            Color newAlpha = clickedObj.GetComponent<SpriteRenderer>().color;
+                            newAlpha.a = 1;
+                            clickedObj.GetComponent<SpriteRenderer>().color = newAlpha;
+
                             holdingObj = clickedObj;
+                        }
 
                         if (clickedObj.GetComponent<Interactor_Pot>().isUsing && canReadyMenu)
                         {
@@ -135,7 +141,7 @@ public class PlayerCooking : MonoBehaviour
                     {
                         // 조리 마지막 단계: 고명 넣기만 가능
                         if (clickedObj.GetComponent<Interactor_Pot>().finalStep) {
-                            if (holdingObj.name == "Seaweed")
+                            if (holdingObj.name == "Seaweed" && !clickedObj.GetComponent<Interactor_Pot>().order[3])
                             {
                                 Debug.Log("미역?");
                                 clickedObj.GetComponent<Interactor_Pot>().Interaction(holdingObj);
@@ -164,7 +170,7 @@ public class PlayerCooking : MonoBehaviour
                 {
                     if (holdingObj != null)
                     {
-                        if (holdingObj.name == "Pot" && !holdingObj.GetComponent<Interactor_Pot>().water)
+                        if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && !holdingObj.GetComponent<Interactor_Pot>().water)
                         {
                             holdingObj.GetComponent<Interactor_Pot>().Interaction(clickedObj);
                         }
@@ -173,7 +179,7 @@ public class PlayerCooking : MonoBehaviour
                 {
                     if (holdingObj != null)
                     {
-                        if (holdingObj.name == "Pot" && holdingObj.GetComponent<Interactor_Pot>().water && !holdingObj.GetComponent<Interactor_Pot>().isUsing)
+                        if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().water && !holdingObj.GetComponent<Interactor_Pot>().isUsing)
                         {
                             holdingObj.GetComponent<Interactor_Pot>().Interaction(clickedObj);
                             holdingObj = null;
@@ -185,7 +191,7 @@ public class PlayerCooking : MonoBehaviour
                 {
                     if (holdingObj != null)
                     {
-                        if (holdingObj.name == "Pot" && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
+                        if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
                         {
                             holdingObj.transform.position = clickedObj.transform.position;
                             holdingObj.GetComponent<Interactor_Pot>().finalStep = true;

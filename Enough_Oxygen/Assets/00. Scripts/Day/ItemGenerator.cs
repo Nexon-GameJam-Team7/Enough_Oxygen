@@ -9,12 +9,14 @@ public class ItemGenerator : MonoBehaviour
     public GameObject SaucePrefab;
     public GameObject FishPrefab;
     public GameObject SeaweedPrefab;
-    public GameObject PotPrefab;
+    public GameObject Pot1Prefab;
+    public GameObject Pot2Prefab;
 
     public Vector3 SaucePos;
     public Vector3 FishPos;
     public Vector3 SeaweedPos;
-    public Vector3 PotPos;
+    public Vector3 Pot1Pos;
+    public Vector3 Pot2Pos;
 
     public void GenerateItem(string name)
     {
@@ -35,16 +37,21 @@ public class ItemGenerator : MonoBehaviour
             prefab = SeaweedPrefab;
             pos = SeaweedPos;
         }
-        else if(name == "Pot")
+        else if(name == "Pot1")
         {
-            prefab = PotPrefab;
-            pos = PotPos;
+            prefab = Pot1Prefab;
+            pos = Pot1Pos;
+        }
+        else if (name == "Pot2")
+        {
+            prefab = Pot2Prefab;
+            pos = Pot2Pos;
         }
 
         GameObject newPrefab = Instantiate(prefab);
         newPrefab.transform.position = pos;
-        newPrefab.name = newPrefab.name.Substring(0, newPrefab.name.Length - 7);
-        if (name != "Pot")
+        newPrefab.name = name;
+        if (name != "Pot1" && name != "Pot2")
             newPrefab.transform.parent = IngredientGroup.transform;
     }
 }

@@ -127,6 +127,9 @@ public class Interactor_Pot : ObjectInteraction
     public override void GoBack()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_Pot;
+        Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
+        newAlpha.a = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = newAlpha;
         water = false;
         isUsing = false;
         order = new bool[] { false, false, false, false };

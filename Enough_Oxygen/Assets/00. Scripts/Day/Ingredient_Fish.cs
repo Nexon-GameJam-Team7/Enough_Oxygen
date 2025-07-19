@@ -40,7 +40,7 @@ public class Ingredient_Fish : ObjectInteraction
         } else if (usingStep == 2)
         {
             // ³¿ºñ¿¡ ³Ö±â
-            if (target.name == "Pot")
+            if (target.name == "Pot1" || target.name == "Pot2")
                 target.GetComponent<Interactor_Pot>().Interaction(this.gameObject);
         }
     }
