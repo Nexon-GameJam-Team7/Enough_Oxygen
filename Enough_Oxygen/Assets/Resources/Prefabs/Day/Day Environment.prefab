@@ -2213,7 +2213,6 @@ MonoBehaviour:
   cg: {fileID: 0}
   canReadyMenu: 1
   myChoppingBoard: {fileID: 253859610443287599}
-  text: {fileID: 0}
 --- !u!1 &7382793877967247236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2836,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2ffafdd1682f6b1439bfd9dac2b96269, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb9506e4c8890b74aa5c0a66ba7c4aa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
