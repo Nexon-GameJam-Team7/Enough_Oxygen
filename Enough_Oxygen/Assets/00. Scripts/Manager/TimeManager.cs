@@ -53,7 +53,7 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) SwapTime();
+        if (Input.GetKeyDown(KeyCode.Space) && timeOfDay == 1) SwapTime();
 
         if (isStop) return;
 

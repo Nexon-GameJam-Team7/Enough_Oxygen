@@ -30,11 +30,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         InputHandler();
-
-        if (Input.GetKeyDown(KeyCode.Z)) itemManager.GetHackUSB();
-        else if (Input.GetKeyDown(KeyCode.X)) itemManager.GetRope();
-        else if (Input.GetKeyDown(KeyCode.V)) itemManager.GetMasterKey();
-        else if (Input.GetKeyDown(KeyCode.C)) itemManager.GetOxygenRoomKey();
     }
 
     /// <summary>
