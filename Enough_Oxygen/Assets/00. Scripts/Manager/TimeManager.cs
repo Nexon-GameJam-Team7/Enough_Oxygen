@@ -25,6 +25,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Sprite[] watchSprite;
     [SerializeField] private Image watchImage;
 
+    [SerializeField] private Canvas watchCanvas;
+
+    [SerializeField] private Camera dayCamera;
+    [SerializeField] private Camera nightCamera;
+
     private bool isStop = false;
 
     private void Start()
@@ -79,6 +84,11 @@ public class TimeManager : MonoBehaviour
             searchLight.gameObject.SetActive(true);
 
             watchImage.sprite = watchSprite[2];
+
+            dayCamera.gameObject.SetActive(false);
+            nightCamera.gameObject.SetActive(true);
+
+            watchCanvas.worldCamera = nightCamera;
         }
         else if (timeOfDay == 1)
         {
@@ -88,6 +98,11 @@ public class TimeManager : MonoBehaviour
             searchLight.gameObject.SetActive(false);
 
             watchImage.sprite = watchSprite[0];
+
+            dayCamera.gameObject.SetActive(true);
+            nightCamera.gameObject.SetActive(false);
+
+            watchCanvas.worldCamera = dayCamera;
         }
 
         timer = 0;  // Init Timer

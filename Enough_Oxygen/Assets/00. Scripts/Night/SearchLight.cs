@@ -1,4 +1,5 @@
 ﻿// Unity
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -63,7 +64,22 @@ public class SearchLight : MonoBehaviour
 
         timeManager.Pause();
 
-        Invoke("SwapTime", 3f);
+        StartCoroutine(AlertCoroutine());
+    }
+
+    private IEnumerator AlertCoroutine()
+    {
+        Alert alert1 = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+        alert1.OpenAlert("감시에 걸려 밤 활동이 금지되었습니다.");
+
+        yield return new WaitForSeconds(4f);
+
+        Alert alert2 = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
+        alert2.OpenAlert("다음 일차로 넘어갑니다.");
+
+        yield return new WaitForSeconds(4f);
+
+        SwapTime();
     }
 
     private void SwapTime()

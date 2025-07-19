@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,9 @@ public class CustomerGenerator : MonoBehaviour
     public void GenerateCustomer()
     {
         curCustomer = Instantiate(prefab);
-        curCustomer.transform.position = new Vector3(-9, 2.5f, 0);
+        curCustomer.transform.SetParent(transform);
+        curCustomer.transform.position = new Vector3(-59, 12.5f, 0);
+
         curCustomer.GetComponent<SpriteRenderer>().sprite = CustomerImg[Random.Range(0, 4)];
         curCustomer.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }

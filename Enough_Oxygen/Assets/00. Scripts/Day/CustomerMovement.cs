@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +7,11 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private CustomerGenerator cg;
 
-    private Vector3 startPoint = new Vector3(-9, 2.0f, 0);
-    private Vector3 waitingPoint = new Vector3(0, 2.0f, 0);
-    private Vector3 endPoint = new Vector3(9, 2.0f, 0);
+    private Vector3 startPoint = new Vector3(-59, 12.0f, 0);
+    private Vector3 waitingPoint = new Vector3(-50, 12.0f, 0);
+    private Vector3 endPoint = new Vector3(-39, 12.0f, 0);
 
-    int pos = 0;    // 0: s->w ¿òÁ÷ÀÌ±â, 1: ´ë±â, 2: w->e ¿òÁ÷ÀÌ±â
+    int pos = 0;    // 0: s->w ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½, 1: ï¿½ï¿½ï¿½, 2: w->e ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½
 
     [SerializeField]
     private float speed = 1.5f;
@@ -48,14 +48,14 @@ public class CustomerMovement : MonoBehaviour
         float distCovered = (Time.time - startTime) * speed;
         float frac = Mathf.Clamp01(distCovered / journeyLength);
 
-        // ±âº» À§Ä¡ (XÃà ¼±Çü ÀÌµ¿)
+        // ï¿½âº» ï¿½ï¿½Ä¡ (Xï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½)
         Vector3 flatPos = Vector3.Lerp(from, to, frac);
 
-        // YÃà ¹Ýµ¿ Ãß°¡ (»çÀÎ °î¼±)
+        // Yï¿½ï¿½ ï¿½Ýµï¿½ ï¿½ß°ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½î¼±)
         float bounce = Mathf.Sin(Time.time * bounceSpeed) * bounceHeight;
         Vector3 finalPos = new Vector3(flatPos.x, flatPos.y + bounce, flatPos.z);
 
-        // À§Ä¡ Àû¿ë
+        // ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         transform.position = finalPos;
 
         if (Vector3.Distance(transform.position, to) < 0.01f)
