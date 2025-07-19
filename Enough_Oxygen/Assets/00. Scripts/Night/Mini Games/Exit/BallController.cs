@@ -20,10 +20,10 @@ public class BallController : MonoBehaviour
     {
         if (!canMove) return;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Move(Vector2Int.up);
-        else if (Input.GetKeyDown(KeyCode.DownArrow)) Move(Vector2Int.down);
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)) Move(Vector2Int.left);
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) Move(Vector2Int.right);
+        if (Input.GetKeyDown(KeyCode.W)) Move(Vector2Int.up);
+        else if (Input.GetKeyDown(KeyCode.S)) Move(Vector2Int.down);
+        else if (Input.GetKeyDown(KeyCode.A)) Move(Vector2Int.left);
+        else if (Input.GetKeyDown(KeyCode.D)) Move(Vector2Int.right);
     }
 
     void Move(Vector2Int dir)

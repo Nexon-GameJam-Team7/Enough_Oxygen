@@ -12,6 +12,8 @@ public class CommnunicationGame : MonoBehaviour
     [SerializeField] private Transform lineParent;
     [SerializeField] private int gridSize = 8;
 
+    [SerializeField] private Sprite ropeFisher;
+
     private Cell[,] grid;
     private Dictionary<string, List<Cell>> symbolGroups = new();
     private Cell dragStartCell = null;
@@ -177,6 +179,9 @@ public class CommnunicationGame : MonoBehaviour
 
                     UIBase ui = Instantiate(GameManager.Resource.Load<UIBase>("Prefabs/UI/Cut Scene", "C_Rope CutScene"));
                     ui.AutoClose(3f);
+
+                    SpriteRenderer spriteRenderer = GameObject.Find("Survelilance").GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = ropeFisher;
 
                     uiBase.Close();
                     return;

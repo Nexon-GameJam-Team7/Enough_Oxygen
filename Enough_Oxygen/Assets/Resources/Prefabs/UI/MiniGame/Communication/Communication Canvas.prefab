@@ -309,3 +309,4 @@ MonoBehaviour:
   gridParent: {fileID: 4347633376781825868}
   lineParent: {fileID: 0}
   gridSize: 8
+  ropeFisher: {fileID: 21300000, guid: 9a3086478ce4aeb4785a97d790bbd1e5, type: 3}
