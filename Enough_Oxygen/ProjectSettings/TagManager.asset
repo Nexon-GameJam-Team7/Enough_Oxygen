@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ingredients
+  - CuttingBoard
+  - Tray
+  - Pot
+  - Temp
+  - Water
+  - Fire
   layers:
   - Default
   - TransparentFX
