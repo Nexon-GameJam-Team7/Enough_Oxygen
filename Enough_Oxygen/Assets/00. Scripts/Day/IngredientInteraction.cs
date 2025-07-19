@@ -16,6 +16,11 @@ public class IngredientInteraction : MonoBehaviour
         initialPos = gameObject.transform.position;
     }
 
+    public void init()
+    {
+        isHolding = false;
+    }
+
     public void HoldObj()
     {
         if (!isHolding)

@@ -12,10 +12,15 @@ public class CustomerGenerator : MonoBehaviour
     
     public bool isCustomerReady = false;
 
+
     // Start is called before the first frame update
     void OnEnable()
     {
         GenerateCustomer();
+    }
+    public void init()
+    {
+        isCustomerReady = false;
     }
 
     public void GenerateCustomer()

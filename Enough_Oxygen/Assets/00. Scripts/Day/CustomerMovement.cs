@@ -43,6 +43,18 @@ public class CustomerMovement : MonoBehaviour
         }
     }
 
+    public void init()
+    {
+        Vector3 startPoint = new Vector3(-9, 2.0f, 0);
+        Vector3 waitingPoint = new Vector3(0, 2.0f, 0);
+        Vector3 endPoint = new Vector3(9, 2.0f, 0);
+
+        startTime = Time.time;
+        journeyLength = 9;
+        pos = 0;
+        cg = GameObject.Find("CustomerGenerator").GetComponent<CustomerGenerator>();
+    }
+
     private void MoveTo(Vector3 from, Vector3 to)
     {
         float distCovered = (Time.time - startTime) * speed;
