@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [DisallowMultipleComponent]
 public class SecurityObject : InteractiveObject
 {
+    private Canvas cutScene;
+
     protected override void ObjectEvent()
     {
         if (GameManager.Data.data.haveItem[itemID])
         {
             Debug.Log("Security Object");
             Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI/MiniGame/Security", "Security Canvas"));
+
+            UIBase uiBase = cutScene.GetComponent<UIBase>();
+            uiBase.Close();
         }
         else
         {
@@ -19,8 +25,14 @@ public class SecurityObject : InteractiveObject
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("나도 된다");
+        base.OnTriggerEnter2D(collision);
+
+        if (isComplete) return;
+
+        if (!collision.CompareTag("Player")) return;
+
+        cutScene = Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI/Cut Scene", "Security CutScene"));
     }
 }

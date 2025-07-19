@@ -21,6 +21,7 @@ public class UIBase : MonoBehaviour
     public void Close()
     {
         player.UnInteraction();
+        player.UnableToInteract();
         Destroy(gameObject);
     }
 }

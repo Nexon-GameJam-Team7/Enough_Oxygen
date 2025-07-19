@@ -35,8 +35,6 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.X)) itemManager.GetRope();
         else if (Input.GetKeyDown(KeyCode.V)) itemManager.GetMasterKey();
         else if (Input.GetKeyDown(KeyCode.C)) itemManager.GetOxygenRoomKey();
-
-        if (Input.GetMouseButtonDown(0)) GameManager.Sound.SFXPlay("click");
     }
 
     /// <summary>
@@ -44,9 +42,10 @@ public class Player : MonoBehaviour
     /// </summary>
     private void InputHandler()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))
         { 
             Interact();
+            GameManager.Sound.SFXPlay("click");
         }
     }
 

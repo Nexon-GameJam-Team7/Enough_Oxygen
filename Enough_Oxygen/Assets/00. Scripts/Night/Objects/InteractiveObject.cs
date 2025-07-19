@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractiveObject : MonoBehaviour
 {
     [SerializeField] protected int itemID;
-    private bool isComplete = false;
+    protected bool isComplete = false;
 
     protected virtual void ObjectEvent()
     {
@@ -14,7 +14,7 @@ public class InteractiveObject : MonoBehaviour
         //Instantiate(GameManager.Resource.Load<Canvas>("Prefabs/UI", "Base Canvas"));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (isComplete) return;
 
