@@ -56,7 +56,7 @@ public class Interactor_Pot : ObjectInteraction
                         order[orderNum++] = true;
                         if (target.name == "Sauce")
                         {
-                            if (boiledTime < 8)
+                            if (boiledTime < 11)
                                 this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_saucePot;
                             Color newAlpha = target.GetComponent<SpriteRenderer>().color;
                             newAlpha.a = 0;
@@ -64,7 +64,7 @@ public class Interactor_Pot : ObjectInteraction
                         }
                         else if (target.name == "Fish")
                         {
-                            if (boiledTime < 8)
+                            if (boiledTime < 11)
                             {
                                 this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_fishPot;
                                 if (boiledTime >= 4)
@@ -109,7 +109,7 @@ public class Interactor_Pot : ObjectInteraction
         Debug.Log("������: " + checkRecipe);
 
         int boiledDegree = 0;   // 0: �͹�, 1: ����, 2: Ž
-        if (boiledTime >= 8)
+        if (boiledTime >= 11)
             boiledDegree = 2;
         else if (boiledTime >= 4)
             boiledDegree = 1;
@@ -124,7 +124,7 @@ public class Interactor_Pot : ObjectInteraction
 
     IEnumerator BurningTimer()
     {
-        while (boiledTime < 8)
+        while (boiledTime < 11)
         {
             yield return new WaitForSeconds(1f);
             boiledTime++;

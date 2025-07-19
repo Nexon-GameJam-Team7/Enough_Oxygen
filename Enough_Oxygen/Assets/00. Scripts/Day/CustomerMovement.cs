@@ -14,7 +14,7 @@ public class CustomerMovement : MonoBehaviour
     int pos = 0;    // 0: s->w �����̱�, 1: ���, 2: w->e �����̱�
 
     [SerializeField]
-    private float speed = 1.5f;
+    private float speed = 2.0f;
     [SerializeField]
     private float bounceHeight = 0.2f;
     [SerializeField]

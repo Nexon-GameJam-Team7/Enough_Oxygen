@@ -39,6 +39,11 @@ public class PlayerCooking : MonoBehaviour
                 {
                     holdingObj.GetComponent<ObjectInteraction>().GoBack();
                     holdingObj = null;
+                } else if (holdingObj.name == "Fish")
+                {
+                    Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
+                    newAlpha.a = 1;
+                    gameObject.GetComponent<SpriteRenderer>().color = newAlpha;
                 }
                 else if (holdingObj.GetComponent<Interactor_Pot>().boiledTime == 0)
                 {
