@@ -18,6 +18,7 @@ public class ChangeCloth : MonoBehaviour
 
     public void PlayCutScene(bool isDay)
     {
+        display.gameObject.SetActive(true);
         if (isDay)
         {
             sceneCnt = morningCutscene.Length;
