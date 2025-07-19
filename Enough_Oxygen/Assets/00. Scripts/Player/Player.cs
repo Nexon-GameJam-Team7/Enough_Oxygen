@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Vector3 startPos;
 
+    [SerializeField] private ItemManager itemManager;
+
     private void Start()
     {
         startPos = transform.position;
@@ -29,10 +31,10 @@ public class Player : MonoBehaviour
     {
         InputHandler();
 
-        if (Input.GetKeyDown(KeyCode.Z)) GameManager.Data.data.haveItem[0] = true;
-        else if (Input.GetKeyDown(KeyCode.X)) GameManager.Data.data.haveItem[1] = true;
-        else if (Input.GetKeyDown(KeyCode.V)) GameManager.Data.data.haveItem[3] = true;
-        else if (Input.GetKeyDown(KeyCode.C)) GameManager.Data.data.haveItem[2] = true;
+        if (Input.GetKeyDown(KeyCode.Z)) itemManager.GetHackUSB();
+        else if (Input.GetKeyDown(KeyCode.X)) itemManager.GetRope();
+        else if (Input.GetKeyDown(KeyCode.V)) itemManager.GetMasterKey();
+        else if (Input.GetKeyDown(KeyCode.C)) itemManager.GetOxygenRoomKey();
 
         if (Input.GetMouseButtonDown(0)) GameManager.Sound.SFXPlay("click");
     }
