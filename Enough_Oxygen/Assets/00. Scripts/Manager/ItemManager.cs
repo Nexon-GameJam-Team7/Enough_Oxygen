@@ -17,11 +17,6 @@ public class ItemManager : MonoBehaviour
         buttons[3].onClick.AddListener(GetMasterKey);
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C)) GameManager.Data.data.money += 100;
-    }
-
     public void GetHackUSB()
     {
         if (GameManager.Data.data.money > itemPrice[0])

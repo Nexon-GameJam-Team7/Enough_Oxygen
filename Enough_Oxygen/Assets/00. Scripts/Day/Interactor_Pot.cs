@@ -12,6 +12,7 @@ public class Interactor_Pot : ObjectInteraction
     public Sprite Sprite_waterPot = null;
     public Sprite Sprite_waterPot1 = null;
     public Sprite Sprite_waterPot2 = null;
+    public Sprite Sprite_waterPotEnd = null;
     public Sprite Sprite_saucePot = null;
     public Sprite Sprite_fishPot = null;
     public Sprite Sprite_burnedWaterPot = null;
@@ -177,7 +178,7 @@ public class Interactor_Pot : ObjectInteraction
         }
         if (onSink && orderNum == 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPot;
+            gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPotEnd;
             water = true;
 
             GameManager.Sound.SFXPlay("pouringwater");
@@ -186,7 +187,7 @@ public class Interactor_Pot : ObjectInteraction
         }
         isWatering = false;
     }
-
+    
     public override void GoBack()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_Pot;
