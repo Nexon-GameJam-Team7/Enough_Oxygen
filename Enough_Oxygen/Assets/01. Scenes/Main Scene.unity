@@ -10302,6 +10302,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: FishPos.x
+      value: -58.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: FishPos.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: Pot1Pos.x
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: Pot1Pos.y
+      value: 9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: Pot2Pos.x
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: Pot2Pos.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: SaucePos.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: SaucePos.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: SeaweedPos.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936505936494026925, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
+      propertyPath: SeaweedPos.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6292779109214515529, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
       propertyPath: m_Name
       value: Day Environment
