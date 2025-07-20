@@ -4273,6 +4273,7 @@ MonoBehaviour:
   twailCamera: {fileID: 1190791620}
   dayEnvPrefab: {fileID: 6292779109214515529, guid: f6c1203f91cb10e48a8d32bd329e50db, type: 3}
   dayEnv: {fileID: 1152149073}
+  twailCanvas: {fileID: 1884386011}
 --- !u!1 &841242752
 GameObject:
   m_ObjectHideFlags: 0
@@ -10587,7 +10588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1884386009
 MonoBehaviour:
   m_ObjectHideFlags: 0

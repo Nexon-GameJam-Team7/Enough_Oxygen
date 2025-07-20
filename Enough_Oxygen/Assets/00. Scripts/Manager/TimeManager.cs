@@ -38,6 +38,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private GameObject dayEnvPrefab;
     [SerializeField] private GameObject dayEnv;
 
+    [SerializeField] private Canvas twailCanvas;
+
     private bool isStop = false;
 
     private void Start()
@@ -99,6 +101,8 @@ public class TimeManager : MonoBehaviour
             alert.OpenAlert("오후가 되어 고물상이 찾아옵니다.");
 
             seller.Init();
+            twailCanvas.gameObject.SetActive(true);
+
             Destroy(dayEnv);
             dayEnv = null;
 
@@ -126,6 +130,7 @@ public class TimeManager : MonoBehaviour
 
             player.gameObject.SetActive(true);
             coinGenerator.gameObject.SetActive(true);
+            twailCanvas.gameObject.SetActive(false);
 
             Resume();
         }
