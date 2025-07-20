@@ -60,8 +60,10 @@ public class Interactor_Pot : ObjectInteraction
                         order[orderNum++] = true;
                         if (target.name == "Sauce")
                         {
-                            if (boiledTime < 11)
+                            if (boiledTime < 11){
                                 this.gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_saucePot;
+                                GameManager.Sound.SFXPlay("swish");
+                            }
                             Color newAlpha = target.GetComponent<SpriteRenderer>().color;
                             newAlpha.a = 0;
                             target.GetComponent<SpriteRenderer>().color = newAlpha;
@@ -99,6 +101,8 @@ public class Interactor_Pot : ObjectInteraction
             itemGenerator.GenerateItem(this.gameObject.name);
             // Ÿ�̸� ����
             StartCoroutine("BurningTimer");
+
+            GameManager.Sound.SFXPlay("bubbles");
         }
     }
 
@@ -119,11 +123,22 @@ public class Interactor_Pot : ObjectInteraction
             boiledDegree = 1;
 
         if (boiledDegree == 1 && checkRecipe && order[3])
+        {
             cost = 500;
+            GameManager.Sound.SFXPlay("fishverynice");
+        }
         else if ((boiledDegree == 1 && checkRecipe && !order[3]) || (boiledDegree == 2 && checkRecipe && order[3]) || (boiledDegree == 0 && checkRecipe && order[3]))
+        {
             cost = 300;
+            GameManager.Sound.SFXPlay("fishnice");
+        }
+        else
+        {
+            GameManager.Sound.SFXPlay("fishbad");
+        }
 
-        return cost;
+
+            return cost;
     }
 
     IEnumerator BurningTimer()
@@ -139,6 +154,7 @@ public class Interactor_Pot : ObjectInteraction
         }
         
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_burnedWaterPot;
+        GameManager.Sound.SFXPlay("sizzling");
     }
 
     IEnumerator PuttingWaterTimer()
@@ -163,6 +179,9 @@ public class Interactor_Pot : ObjectInteraction
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPot;
             water = true;
+
+            GameManager.Sound.SFXPlay("pouringwater");
+
             order[orderNum++] = true;
         }
         isWatering = false;

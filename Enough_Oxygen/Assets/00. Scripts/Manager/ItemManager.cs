@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private int[] itemPrice = { 10000, 20000, 30000, 50000 };
+    [SerializeField] private int[] itemPrice;
 
     [SerializeField] private Button[] buttons;
 
@@ -24,8 +24,9 @@ public class ItemManager : MonoBehaviour
             GameManager.Data.data.haveItem[0] = true;
             uiManager.DisplayGetItem(0);
             buttons[0].gameObject.SetActive(false);
+
+            GameManager.Data.data.money -= itemPrice[0];
         }
-        Debug.Log("돈 부족");
     }
 
     public void GetRope()
@@ -35,8 +36,9 @@ public class ItemManager : MonoBehaviour
             GameManager.Data.data.haveItem[1] = true;
             uiManager.DisplayGetItem(1);
             buttons[1].gameObject.SetActive(false);
+
+            GameManager.Data.data.money -= itemPrice[1];
         }
-        Debug.Log("돈 부족");
     }
 
     public void GetOxygenRoomKey()
@@ -46,8 +48,9 @@ public class ItemManager : MonoBehaviour
             GameManager.Data.data.haveItem[2] = true;
             uiManager.DisplayGetItem(2);
             buttons[2].gameObject.SetActive(false);
+
+            GameManager.Data.data.money -= itemPrice[2];
         }
-        Debug.Log("돈 부족");
     }
 
     public void GetMasterKey()
@@ -57,7 +60,8 @@ public class ItemManager : MonoBehaviour
             GameManager.Data.data.haveItem[3] = true;
             uiManager.DisplayGetItem(3);
             buttons[3].gameObject.SetActive(false);
+
+            GameManager.Data.data.money -= itemPrice[3];
         }
-        Debug.Log("돈 부족");
     }
 }

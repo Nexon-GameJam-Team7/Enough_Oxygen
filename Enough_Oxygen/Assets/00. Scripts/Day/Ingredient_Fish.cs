@@ -26,6 +26,7 @@ public class Ingredient_Fish : ObjectInteraction
             target.GetComponent<Interactor_CuttingBoard>().myFish = this.gameObject;
         } else if (usingStep == 1)
         {
+            GameManager.Sound.SFXPlay("cutfish");
             usingStep++;
             // ���� ������
             target.GetComponent<Interactor_CuttingBoard>().Chopping();

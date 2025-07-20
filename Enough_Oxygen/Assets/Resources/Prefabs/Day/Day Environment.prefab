@@ -2267,11 +2267,11 @@ MonoBehaviour:
   SeaweedPrefab: {fileID: 6982254938936983411, guid: ccde06a0f3e736443bac09f7e9caf8e6, type: 3}
   Pot1Prefab: {fileID: 3092008276452562112, guid: cf87520d29902704e944cd9ff0c235e0, type: 3}
   Pot2Prefab: {fileID: 3092008276452562112, guid: cf87520d29902704e944cd9ff0c235e0, type: 3}
-  SaucePos: {x: 5, y: -0.5, z: 0}
-  FishPos: {x: -8, y: -0.5, z: 0}
-  SeaweedPos: {x: -5, y: 0.5, z: 0}
-  Pot1Pos: {x: 7.75, y: 0, z: 0}
-  Pot2Pos: {x: 7.75, y: 2.5, z: 0}
+  SaucePos: {x: -45, y: 9, z: 0}
+  FishPos: {x: -58.5, y: 9, z: 0}
+  SeaweedPos: {x: -55, y: 10, z: 0}
+  Pot1Pos: {x: -42, y: 9.5, z: 0}
+  Pot2Pos: {x: -42, y: 12, z: 0}
 --- !u!1 &7687072396476201478
 GameObject:
   m_ObjectHideFlags: 0

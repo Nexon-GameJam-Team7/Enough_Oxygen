@@ -137,6 +137,7 @@ public class PlayerCooking : MonoBehaviour
                             // ���� �� ��
                             Debug.Log("���� �� ��");
                             GameManager.Data.data.money += cg.curCustomer.GetComponent<CustomerMovement>().GetFood(clickedObj);
+                            GameManager.Sound.SFXPlay("coin");
                             Destroy(clickedObj.gameObject);
                             canReadyMenu = true;
                             break;
@@ -150,6 +151,8 @@ public class PlayerCooking : MonoBehaviour
                             clickedObj.GetComponent<SpriteRenderer>().color = newAlpha;
 
                             holdingObj = clickedObj;
+
+                            GameManager.Sound.SFXPlay("bowlclatter");
                         }
 
                         if (clickedObj.GetComponent<Interactor_Pot>().isUsing && canReadyMenu)
