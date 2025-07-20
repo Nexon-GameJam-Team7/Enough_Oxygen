@@ -7,9 +7,9 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField]
     private CustomerGenerator cg;
 
-    private Vector3 startPoint = new Vector3(-59, 12.0f, 0);
-    private Vector3 waitingPoint = new Vector3(-50, 12.0f, 0);
-    private Vector3 endPoint = new Vector3(-39, 12.0f, 0);
+    private Vector3 startPoint = new Vector3(-59, 11.5f, 0);
+    private Vector3 waitingPoint = new Vector3(-50, 11.5f, 0);
+    private Vector3 endPoint = new Vector3(-39, 11.5f, 0);
 
     int pos = 0;    // 0: s->w �����̱�, 1: ���, 2: w->e �����̱�
 

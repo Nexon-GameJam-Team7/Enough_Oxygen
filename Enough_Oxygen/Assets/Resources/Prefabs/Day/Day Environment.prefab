@@ -323,6 +323,8 @@ MonoBehaviour:
   isUsing: 0
   Sprite_Pot: {fileID: 21300000, guid: b7c26bf973785cd4686301442f4421fa, type: 3}
   Sprite_waterPot: {fileID: 21300000, guid: 772b46eaf4a1f4945955d5d66c82932e, type: 3}
+  Sprite_waterPot1: {fileID: 21300000, guid: 10ffb8393be585246b9da41d2a4a1b27, type: 3}
+  Sprite_waterPot2: {fileID: 21300000, guid: 8efe703dd2f7a1b478f5f6b29151aa73, type: 3}
   Sprite_saucePot: {fileID: 21300000, guid: 929491e8b61359b4fa51e175c6e620a1, type: 3}
   Sprite_fishPot: {fileID: 21300000, guid: 98c21452baaa2e04f88806d86c636c4a, type: 3}
   Sprite_burnedWaterPot: {fileID: 21300000, guid: 84b5dc318e87f4c4d9bc01f16de3d736, type: 3}
@@ -597,6 +599,8 @@ MonoBehaviour:
   isUsing: 0
   Sprite_Pot: {fileID: 21300000, guid: b7c26bf973785cd4686301442f4421fa, type: 3}
   Sprite_waterPot: {fileID: 21300000, guid: 772b46eaf4a1f4945955d5d66c82932e, type: 3}
+  Sprite_waterPot1: {fileID: 21300000, guid: 10ffb8393be585246b9da41d2a4a1b27, type: 3}
+  Sprite_waterPot2: {fileID: 21300000, guid: 8efe703dd2f7a1b478f5f6b29151aa73, type: 3}
   Sprite_saucePot: {fileID: 21300000, guid: 929491e8b61359b4fa51e175c6e620a1, type: 3}
   Sprite_fishPot: {fileID: 21300000, guid: 98c21452baaa2e04f88806d86c636c4a, type: 3}
   Sprite_burnedWaterPot: {fileID: 21300000, guid: 84b5dc318e87f4c4d9bc01f16de3d736, type: 3}
@@ -933,7 +937,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -944,7 +948,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &2260919383240690195
 GameObject:
@@ -1587,7 +1591,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1598,7 +1602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &6292779109214515529
 GameObject:
@@ -1917,7 +1921,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1928,7 +1932,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &6970957299004660062
 GameObject:
@@ -2257,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IngredientGroup: {fileID: 1571079872475022249}
+  DayGroup: {fileID: 6292779109214515529}
   SaucePrefab: {fileID: 2062527236081642789, guid: ee5ee354bc3da2e47b3cc7497f108563, type: 3}
   FishPrefab: {fileID: 2145566179054242341, guid: f3f35ccea5b5cdb47b52b6ed6938cbf1, type: 3}
   SeaweedPrefab: {fileID: 6982254938936983411, guid: ccde06a0f3e736443bac09f7e9caf8e6, type: 3}
@@ -2546,7 +2551,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2557,7 +2562,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &8104461978965124973
 GameObject:

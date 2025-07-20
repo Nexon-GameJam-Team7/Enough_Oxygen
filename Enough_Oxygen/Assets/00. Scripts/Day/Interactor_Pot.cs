@@ -10,6 +10,8 @@ public class Interactor_Pot : ObjectInteraction
 
     public Sprite Sprite_Pot = null;
     public Sprite Sprite_waterPot = null;
+    public Sprite Sprite_waterPot1 = null;
+    public Sprite Sprite_waterPot2 = null;
     public Sprite Sprite_saucePot = null;
     public Sprite Sprite_fishPot = null;
     public Sprite Sprite_burnedWaterPot = null;
@@ -157,6 +159,14 @@ public class Interactor_Pot : ObjectInteraction
         int puttingTime = 0;
         while (onSink && puttingTime < 2)
         {
+            if (puttingTime == 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPot1;
+            }
+            else if (puttingTime == 1)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPot2;
+            }
             yield return new WaitForSeconds(1f);
             puttingTime++;
         }

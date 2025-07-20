@@ -38,12 +38,13 @@ public class PlayerCooking : MonoBehaviour
                 if (!holdingObj.CompareTag("Pot"))
                 {
                     holdingObj.GetComponent<ObjectInteraction>().GoBack();
+                    if (holdingObj.name == "Fish")
+                    {
+                        Color newAlpha = holdingObj.GetComponent<SpriteRenderer>().color;
+                        newAlpha.a = 1;
+                        holdingObj.GetComponent<SpriteRenderer>().color = newAlpha;
+                    }
                     holdingObj = null;
-                } else if (holdingObj.name == "Fish")
-                {
-                    Color newAlpha = gameObject.GetComponent<SpriteRenderer>().color;
-                    newAlpha.a = 1;
-                    gameObject.GetComponent<SpriteRenderer>().color = newAlpha;
                 }
                 else if (holdingObj.GetComponent<Interactor_Pot>().boiledTime == 0)
                 {
@@ -71,6 +72,12 @@ public class PlayerCooking : MonoBehaviour
                         if ((holdingObj.name == "Pot1" || holdingObj.name == "Pot2") && holdingObj.GetComponent<Interactor_Pot>().boiledTime != 0)
                             break;
                         holdingObj.GetComponent<ObjectInteraction>().GoBack();
+                        if (holdingObj.name == "Fish")
+                        {
+                            Color newAlpha = holdingObj.GetComponent<SpriteRenderer>().color;
+                            newAlpha.a = 1;
+                            holdingObj.GetComponent<SpriteRenderer>().color = newAlpha;
+                        }
                     }
                     // �ٸ� ������Ʈ ���� ����
                     if (!clickedObj.GetComponent<ObjectInteraction>().isUsing && (clickedObj.gameObject.tag != "Pot" || clickedObj.gameObject.tag != "Temp"))

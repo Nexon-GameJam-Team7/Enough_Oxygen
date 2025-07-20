@@ -124,6 +124,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b6cd1a53dfe7f4eadee34e7f9dc631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleCutscene:
+  - {fileID: 21300000, guid: ee2f987bd572b2c4c83492810a7fed78, type: 3}
+  - {fileID: 21300000, guid: 054c1918e7b13164eadd6cec186935e2, type: 3}
+  - {fileID: 21300000, guid: 5aab777440c35e74593b19e715c3a5cf, type: 3}
+  - {fileID: 21300000, guid: 16117cb5afce1804cb7d8993671c37f0, type: 3}
+  - {fileID: 21300000, guid: 191a7abd565bd5d4ab13dec9c2745d51, type: 3}
+  - {fileID: 21300000, guid: 4e851a33000eda140a9acfadece18e27, type: 3}
+  - {fileID: 21300000, guid: 64859bc74097a98429a4451a544c99bb, type: 3}
+  - {fileID: 21300000, guid: b0537a294ccb32c449a6ac7364ddb2a1, type: 3}
+  - {fileID: 21300000, guid: 63dbb92ef937fff46abc7d8de69b05d7, type: 3}
+  - {fileID: 21300000, guid: 10a9e057b4ff5ad4b8295b4fd15def2a, type: 3}
+  - {fileID: 21300000, guid: 68fde5d8974a59749b2730071b2d2f6a, type: 3}
+  - {fileID: 21300000, guid: 0718687308352df4e8cb65109d26a6d9, type: 3}
+  - {fileID: 21300000, guid: 8ae8c66572bb6644bb3f9c9a0b57947c, type: 3}
+  - {fileID: 21300000, guid: fd05afd6a8803fa4991e90094ed438a6, type: 3}
+  - {fileID: 21300000, guid: de765e1db8c13e74e8b080687469e13e, type: 3}
   morningCutscene:
   - {fileID: 21300000, guid: d0a3d6d35455d2e4bbdc859fc609f1ef, type: 3}
   - {fileID: 21300000, guid: 79199b858212af641b416632a5284ba9, type: 3}
