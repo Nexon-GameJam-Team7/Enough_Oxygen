@@ -325,6 +325,7 @@ MonoBehaviour:
   Sprite_waterPot: {fileID: 21300000, guid: 772b46eaf4a1f4945955d5d66c82932e, type: 3}
   Sprite_waterPot1: {fileID: 21300000, guid: 10ffb8393be585246b9da41d2a4a1b27, type: 3}
   Sprite_waterPot2: {fileID: 21300000, guid: 8efe703dd2f7a1b478f5f6b29151aa73, type: 3}
+  Sprite_waterPotEnd: {fileID: 21300000, guid: bf7022d0c253d024e814160349ba2d93, type: 3}
   Sprite_saucePot: {fileID: 21300000, guid: 929491e8b61359b4fa51e175c6e620a1, type: 3}
   Sprite_fishPot: {fileID: 21300000, guid: 98c21452baaa2e04f88806d86c636c4a, type: 3}
   Sprite_burnedWaterPot: {fileID: 21300000, guid: 84b5dc318e87f4c4d9bc01f16de3d736, type: 3}
@@ -601,6 +602,7 @@ MonoBehaviour:
   Sprite_waterPot: {fileID: 21300000, guid: 772b46eaf4a1f4945955d5d66c82932e, type: 3}
   Sprite_waterPot1: {fileID: 21300000, guid: 10ffb8393be585246b9da41d2a4a1b27, type: 3}
   Sprite_waterPot2: {fileID: 21300000, guid: 8efe703dd2f7a1b478f5f6b29151aa73, type: 3}
+  Sprite_waterPotEnd: {fileID: 21300000, guid: bf7022d0c253d024e814160349ba2d93, type: 3}
   Sprite_saucePot: {fileID: 21300000, guid: 929491e8b61359b4fa51e175c6e620a1, type: 3}
   Sprite_fishPot: {fileID: 21300000, guid: 98c21452baaa2e04f88806d86c636c4a, type: 3}
   Sprite_burnedWaterPot: {fileID: 21300000, guid: 84b5dc318e87f4c4d9bc01f16de3d736, type: 3}

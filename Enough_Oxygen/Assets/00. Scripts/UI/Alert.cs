@@ -16,6 +16,8 @@ public class Alert : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI tmp;
 
+    public ChangeCloth CutScenePlayer;
+
     private void Start()
     {
         StartCoroutine(CloseCoroutine());

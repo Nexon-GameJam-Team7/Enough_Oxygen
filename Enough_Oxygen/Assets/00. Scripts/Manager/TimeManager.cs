@@ -74,7 +74,7 @@ public class TimeManager : MonoBehaviour
             SwapTime();
         }
     }
-    
+
     public int GetTimeOfDay()
     {
         return timeOfDay;
@@ -127,6 +127,8 @@ public class TimeManager : MonoBehaviour
 
             Alert alert = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
             alert.OpenAlert("밤이 되었습니다.");
+
+            alert.CutScenePlayer.PlayCutScene(2);
 
             player.gameObject.SetActive(true);
             coinGenerator.gameObject.SetActive(true);
@@ -218,8 +220,9 @@ public class TimeManager : MonoBehaviour
     {
         Alert alert1 = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
 
-        if (4-dayCount == 1) alert1.OpenAlert("하루 남았습니다.");
+        if (4 - dayCount == 1) alert1.OpenAlert("하루 남았습니다.");
         else alert1.OpenAlert((4 - dayCount) + "일 남았습니다.");
+        alert1.CutScenePlayer.PlayCutScene(1);
 
         yield return new WaitForSeconds(3f);
 
