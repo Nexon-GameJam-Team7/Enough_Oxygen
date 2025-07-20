@@ -6,6 +6,9 @@ using UnityEngine;
 public class ChangeCloth : MonoBehaviour
 {
     [SerializeField]
+    private bool isTitleScene = false;
+
+    [SerializeField]
     private Sprite[] idleCutscene = new Sprite[15];
     [SerializeField]
     private Sprite[] morningCutscene = new Sprite[15];
@@ -20,6 +23,7 @@ public class ChangeCloth : MonoBehaviour
 
     public void PlayCutScene(int type)
     {
+        Debug.Log("play");
         // 0: Idle, 1: Morning, 2: Evening
         display.gameObject.SetActive(true);
         if (type == 0)
@@ -59,7 +63,8 @@ public class ChangeCloth : MonoBehaviour
             display.sprite = morningCutscene[curScene];
             curScene++;
         }
-        //display.gameObject.SetActive(false);
+        if (!isTitleScene)
+            display.gameObject.SetActive(false);
     }
     IEnumerator EveningScene()
     {
@@ -70,6 +75,6 @@ public class ChangeCloth : MonoBehaviour
             display.sprite = eveningCutscene[curScene];
             curScene++;
         }
-        //display.gameObject.SetActive(false);
+        display.gameObject.SetActive(false);
     }
 }

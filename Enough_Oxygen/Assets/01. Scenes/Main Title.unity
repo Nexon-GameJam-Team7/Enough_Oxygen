@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CutScenePlayer: {fileID: 1024129022}
+  SceneNum: 0
 --- !u!1 &461708565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,6 +2021,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1485773251}
     m_Modifications:
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: isTitleScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
       propertyPath: IdleCutscene.Array.data[0]
       value: 

@@ -28,6 +28,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Image watchImage;
 
     [SerializeField] private Canvas watchCanvas;
+    [SerializeField] private ChangeCloth dayClothCutScenePlayer;
+    [SerializeField] private ChangeCloth nightClothCutScenePlayer;
 
     [SerializeField] private Camera dayCamera;
     [SerializeField] private Camera nightCamera;
@@ -118,6 +120,8 @@ public class TimeManager : MonoBehaviour
             Alert alert = Instantiate(GameManager.Resource.Load<Alert>("Prefabs/UI", "Alert Canvas"));
             alert.OpenAlert("밤이 되었습니다.");
 
+            nightClothCutScenePlayer.PlayCutScene(2);
+
             player.gameObject.SetActive(true);
 
             Resume();
@@ -153,6 +157,8 @@ public class TimeManager : MonoBehaviour
             dayEnv = Instantiate(dayEnvPrefab);
 
             StartCoroutine(DayAlertCoroutine());
+
+            dayClothCutScenePlayer.PlayCutScene(1);
         }
 
         timer = 0;  // Init Timer

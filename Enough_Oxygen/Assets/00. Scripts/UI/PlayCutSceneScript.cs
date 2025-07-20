@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleStart : MonoBehaviour
+public class PlayCutSceneScript : MonoBehaviour
 {
     [SerializeField]
     private ChangeCloth CutScenePlayer;
 
+    [SerializeField]
+    private int SceneNum = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        CutScenePlayer.PlayCutScene(0);
+        CutScenePlayer.PlayCutScene(SceneNum);
     }
 }
