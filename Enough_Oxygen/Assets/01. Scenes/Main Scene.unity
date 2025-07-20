@@ -7122,7 +7122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- \uD574\uD0B9 ISB\n- \uBC27\uC904\n- \uC0B0\uC18C\uACF5\uAE09\uC2E4 \uC5F4\uC1E0\n-
+  m_text: "- \uD574\uD0B9 USB\n- \uBC27\uC904\n- \uC0B0\uC18C\uACF5\uAE09\uC2E4 \uC5F4\uC1E0\n-
     \uB9C8\uC2A4\uD130 \uD0A4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 722ffd25b82b92f4db30d4662234032d, type: 2}
