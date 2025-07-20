@@ -17,9 +17,11 @@ public class TimeManager : MonoBehaviour
     [Range(0, 2), Header("낮: 0 | 오후: 1 | 밤: 2")]
     [SerializeField] private int timeOfDay;
 
-    [SerializeField] private SearchLight searchLight;
+    [SerializeField] private SearchLight[] searchLights;
     [SerializeField] private Player player;
     [SerializeField] private JunkSellerMovement seller;
+
+    [SerializeField] private CoinGenerator coinGenerator;
 
     [SerializeField] private TextMeshProUGUI timerTMP;
     [SerializeField] private TextMeshProUGUI dayTMP;
@@ -105,7 +107,11 @@ public class TimeManager : MonoBehaviour
         else if (timeOfDay == 1)
         {
             timeOfDay = 2;
-            searchLight.gameObject.SetActive(true);
+
+            for (int i = 0; i < searchLights.Length; i++)
+            {
+                searchLights[i].gameObject.SetActive(true);
+            }
 
             watchImage.sprite = watchSprite[2];
 
@@ -119,6 +125,7 @@ public class TimeManager : MonoBehaviour
             alert.OpenAlert("밤이 되었습니다.");
 
             player.gameObject.SetActive(true);
+            coinGenerator.gameObject.SetActive(true);
 
             Resume();
         }
@@ -137,7 +144,11 @@ public class TimeManager : MonoBehaviour
             }
 
             GameManager.Sound.BGMPlay("bgm1");
-            searchLight.gameObject.SetActive(false);
+
+            for (int i = 0; i < searchLights.Length; i++)
+            {
+                searchLights[i].gameObject.SetActive(false);
+            }
 
             watchImage.sprite = watchSprite[0];
 
@@ -149,6 +160,7 @@ public class TimeManager : MonoBehaviour
 
             player.Init();
             player.gameObject.SetActive(false);
+            coinGenerator.gameObject.SetActive(false);
 
             dayEnv = Instantiate(dayEnvPrefab);
 
