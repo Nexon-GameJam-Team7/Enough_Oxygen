@@ -16,6 +16,8 @@ public class Interactor_Pot : ObjectInteraction
     public Sprite Sprite_fishPot = null;
     public Sprite Sprite_burnedWaterPot = null;
     public Sprite Sprite_endPot = null;
+
+    private bool isWatering = false;
     public bool water = false;
     private bool onSink = false;
     public bool finalStep = false;
@@ -84,7 +86,7 @@ public class Interactor_Pot : ObjectInteraction
             // ���� ���� �ڸ��� ������ ����
         } else if (target.gameObject.CompareTag("Water"))
         {
-            if (!water)
+            if (!water && !isWatering)
             {
                 StartCoroutine("PuttingWaterTimer");
             }
@@ -126,6 +128,7 @@ public class Interactor_Pot : ObjectInteraction
 
     IEnumerator BurningTimer()
     {
+        Debug.Log("timer");
         while (boiledTime < 11)
         {
             yield return new WaitForSeconds(1f);
@@ -140,9 +143,11 @@ public class Interactor_Pot : ObjectInteraction
 
     IEnumerator PuttingWaterTimer()
     {
+        isWatering = true;
         int puttingTime = 0;
         while (onSink && puttingTime < 2)
         {
+            Debug.Log(puttingTime);
             if (puttingTime == 0)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_waterPot1;
@@ -160,6 +165,7 @@ public class Interactor_Pot : ObjectInteraction
             water = true;
             order[orderNum++] = true;
         }
+        isWatering = false;
     }
 
     public override void GoBack()
@@ -183,6 +189,12 @@ public class Interactor_Pot : ObjectInteraction
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.name == "Sink")
+        {
+            if (!water)
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite_Pot;
+            isWatering = false;
+            StopCoroutine("PuttingWaterTimer");
             onSink = false;
+        }
     }
 }
