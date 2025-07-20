@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemGenerator : MonoBehaviour
 {
     public GameObject IngredientGroup;
+    public GameObject DayGroup;
 
     public GameObject SaucePrefab;
     public GameObject FishPrefab;
@@ -54,5 +55,7 @@ public class ItemGenerator : MonoBehaviour
         newPrefab.name = name;
         if (name != "Pot1" && name != "Pot2")
             newPrefab.transform.parent = IngredientGroup.transform;
+        else
+            newPrefab.transform.parent = DayGroup.transform;
     }
 }

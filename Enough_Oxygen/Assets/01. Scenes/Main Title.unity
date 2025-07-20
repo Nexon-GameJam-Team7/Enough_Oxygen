@@ -276,6 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411242280}
   - component: {fileID: 411242279}
+  - component: {fileID: 411242281}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -351,6 +352,19 @@ Transform:
   - {fileID: 1052728553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411242281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411242278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566624a52770e8048a39449503474be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutScenePlayer: {fileID: 1024129022}
 --- !u!1 &461708565
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c2bd95728dbc046afe7b2168a62028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
 --- !u!4 &461708567
 Transform:
   m_ObjectHideFlags: 0
@@ -926,7 +939,7 @@ Transform:
   m_GameObject: {fileID: 1052728552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -973,12 +986,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32a8b1e3707c2414fae0cc974ca428b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85f7b92105a6e784ba20c131c595e8ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.4, y: 4.6}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1339,6 +1352,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1024129022}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IdleScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1364126359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,11 +1523,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1024129022}
         m_TargetAssemblyTypeName: ChangeCloth, Assembly-CSharp
         m_MethodName: PlayCutScene
-        m_Mode: 6
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1663,9 +1688,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1024129019}
   - {fileID: 1510354130}
   - {fileID: 1257249041}
-  - {fileID: 1024129019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1698,7 +1723,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510354129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1709,7 +1734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: -425, y: -200}
   m_SizeDelta: {x: 413, y: 178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510354131
@@ -1995,6 +2020,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1485773251}
     m_Modifications:
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ee2f987bd572b2c4c83492810a7fed78, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 054c1918e7b13164eadd6cec186935e2, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5aab777440c35e74593b19e715c3a5cf, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 16117cb5afce1804cb7d8993671c37f0, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 191a7abd565bd5d4ab13dec9c2745d51, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e851a33000eda140a9acfadece18e27, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 64859bc74097a98429a4451a544c99bb, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: b0537a294ccb32c449a6ac7364ddb2a1, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: b0537a294ccb32c449a6ac7364ddb2a1, type: 3}
+    - target: {fileID: 129872352120714551, guid: c0a7ddbc974495c48951d38736534349, type: 3}
+      propertyPath: IdleCutscene.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 68fde5d8974a59749b2730071b2d2f6a, type: 3}
     - target: {fileID: 5215593750194271184, guid: c0a7ddbc974495c48951d38736534349, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

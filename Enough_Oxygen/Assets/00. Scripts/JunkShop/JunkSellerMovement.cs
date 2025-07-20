@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class JunkSellerMovement : MonoBehaviour
 {
-    private Vector3 startPoint = new Vector3(-9.6f, 57.1f, 0);
-    private Vector3 waitingPoint = new Vector3(0, 57.1f, 0);
-    private Vector3 endPoint = new Vector3(9.6f, 57.1f, 0);
+    private Vector3 startPoint = new Vector3(-9.6f, 56.4f, 0);
+    private Vector3 waitingPoint = new Vector3(0, 56.4f, 0);
+    private Vector3 endPoint = new Vector3(9.6f, 56.4f, 0);
 
     int pos = 0;    // 0: s->w �����̱�, 1: ���, 2: w->e �����̱�
 
